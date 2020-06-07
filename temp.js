@@ -1,9 +1,8 @@
 
-const temp = (
-  <p>test code</p>
+var temp = React.createElement(
+  'p',
+  null,
+  'test code'
 );
 
-ReactDOM.render(
-  temp,
-  document.getElementById('app')
-);
+ReactDOM.render(temp, document.getElementById('app'));

@@ -1,0 +1,20 @@
+{
+  "name": "BasicCalculator",
+  "version": "1.0.0",
+  "description": "Web application that has basic calculator functionality. Main purpose is to practice React.js",
+  "main": "temp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtian725/BasicCalculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mtian725/BasicCalculator/issues"
+  },
+  "homepage": "https://github.com/mtian725/BasicCalculator#readme"
+}
