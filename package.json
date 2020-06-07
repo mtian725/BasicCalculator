@@ -1,0 +1,23 @@
+{
+  "name": "basic-calculator",
+  "version": "1.0.0",
+  "description": "Web application that has basic calculator functionality. Main purpose is to practice React.js",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtian725/BasicCalculator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mtian725/BasicCalculator/issues"
+  },
+  "homepage": "https://github.com/mtian725/BasicCalculator#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  }
+}
