@@ -6,8 +6,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-import React from 'react';
-import ReactDOM from 'react-dom';
 import '../styles.css';
 
 var Calculator = function (_React$Component) {
@@ -20,57 +18,57 @@ var Calculator = function (_React$Component) {
   }
 
   _createClass(Calculator, [{
-    key: 'render',
+    key: "render",
     value: function render() {
       return React.createElement(
-        'div',
+        "div",
         null,
         React.createElement(
-          'div',
-          { className: 'screen' },
+          "div",
+          { className: "screen" },
           React.createElement(
-            'p',
+            "p",
             null,
-            'something'
+            "something"
           )
         ),
         React.createElement(
-          'div',
-          { className: 'items' },
+          "div",
+          { className: "items" },
           React.createElement(
-            'button',
-            { type: 'button', className: 'temp-button' },
-            '1'
+            "button",
+            { type: "button", className: "temp-button" },
+            "1"
           ),
           React.createElement(
-            'button',
-            { type: 'button', className: 'temp-button' },
-            '2'
+            "button",
+            { type: "button", className: "temp-button" },
+            "2"
           ),
           React.createElement(
-            'button',
-            { type: 'button', className: 'temp-button' },
-            '3'
+            "button",
+            { type: "button", className: "temp-button" },
+            "3"
           ),
           React.createElement(
-            'button',
-            { type: 'button', className: 'temp-button' },
-            '4'
+            "button",
+            { type: "button", className: "temp-button" },
+            "4"
           ),
           React.createElement(
-            'button',
-            { type: 'button', className: 'temp-bottom-a' },
-            '5'
+            "button",
+            { type: "button", className: "temp-bottom-a" },
+            "5"
           ),
           React.createElement(
-            'button',
-            { type: 'button', className: 'temp-bottom-b' },
-            '6'
+            "button",
+            { type: "button", className: "temp-bottom-b" },
+            "6"
           ),
           React.createElement(
-            'button',
-            { type: 'button', className: 'temp-bottom-b' },
-            '7'
+            "button",
+            { type: "button", className: "temp-bottom-b" },
+            "7"
           )
         )
       );
