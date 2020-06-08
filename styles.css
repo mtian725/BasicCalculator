@@ -180,6 +180,33 @@
   color: white;
 }
 
+.func-select {
+  margin-left: 8px;
+  margin-top: 8px;
+  width: 83px;
+  height: 83px;
+  border: 3px solid black;
+  border-radius: 2rem;
+  font-size: 200%;
+  font-weight: bold;
+  background-color: white;
+  color: #ffdc96;
+}
+
+.func-b-select {
+  margin-left: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  width: 83px;
+  height: 83px;
+  border: 3px solid black;
+  border-radius: 2rem;
+  font-size: 200%;
+  font-weight: bold;
+  background-color: white;
+  color: #ffdc96;
+}
+
 .special-func:active {
   margin-left: 8px;
   margin-top: 8px;
