@@ -24,12 +24,6 @@ var Num = function (_React$Component) {
       var newNum = this.props.digit;
       this.props.onClick(newNum);
     }
-
-    //shouldComponentUpdate (nextProps, nextState) {
-    //return (this.props.curNum.length < 10); // Or if length < 11 if there is a decimal
-    // to get pure length do something like absolute val + check for decimal
-    //}
-
   }, {
     key: "render",
     value: function render() {
@@ -100,7 +94,7 @@ var SpOp = function (_React$Component3) {
     value: function render() {
       return React.createElement(
         "button",
-        { type: "button", className: "special-func" },
+        { type: "button", className: "special-func", onClick: this.props.onClick },
         this.props.spOp
       );
     }
@@ -143,15 +137,29 @@ var Calculator = function (_React$Component5) {
     _this5.state = { // will change state names to make it work with everything just val for now for testing purposes
       val: "0"
     };
+    _this5.toggleParity = _this5.toggleParity.bind(_this5);
     _this5.addNum = _this5.addNum.bind(_this5);
     return _this5;
   }
 
   _createClass(Calculator, [{
+    key: "toggleParity",
+    value: function toggleParity() {
+      var curVal = this.state.val;
+      this.setState({
+        val: String(Number(curVal) * -1)
+      });
+    }
+  }, {
     key: "addNum",
     value: function addNum(digit) {
       var curVal = this.state.val;
-      if (curVal === "0") {
+      if (curVal.length === 9) {
+        // add different checks for decimal point and + -
+        this.setState({ //do nothing
+          val: curVal
+        });
+      } else if (curVal === "0") {
         this.setState({
           val: digit
         });
@@ -160,14 +168,6 @@ var Calculator = function (_React$Component5) {
           val: curVal + digit
         });
       }
-    }
-  }, {
-    key: "shouldComponentUpdate",
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      console.log(this.state.val);
-      console.log(this.state.val.length < 10);
-      return this.state.val.length < 10; // Or if length < 11 if there is a decimal
-      // to get pure length do something like absolute val + check for decimal
     }
   }, {
     key: "render",
@@ -188,22 +188,22 @@ var Calculator = function (_React$Component5) {
           "div",
           { className: "items" },
           React.createElement(SpOp, { spOp: "C" }),
-          React.createElement(SpOp, { spOp: "+/-" }),
+          React.createElement(SpOp, { spOp: "+/-", onClick: this.toggleParity }),
           React.createElement(SpOp, { spOp: "%" }),
           React.createElement(Op, { op: "/" }),
-          React.createElement(Num, { digit: "7", curNum: this.state.val, onClick: this.addNum }),
-          React.createElement(Num, { digit: "8", curNum: this.state.val, onClick: this.addNum }),
-          React.createElement(Num, { digit: "9", curNum: this.state.val, onClick: this.addNum }),
+          React.createElement(Num, { digit: "7", onClick: this.addNum }),
+          React.createElement(Num, { digit: "8", onClick: this.addNum }),
+          React.createElement(Num, { digit: "9", onClick: this.addNum }),
           React.createElement(Op, { op: "x" }),
-          React.createElement(Num, { digit: "4", curNum: this.state.val, onClick: this.addNum }),
-          React.createElement(Num, { digit: "5", curNum: this.state.val, onClick: this.addNum }),
-          React.createElement(Num, { digit: "6", curNum: this.state.val, onClick: this.addNum }),
+          React.createElement(Num, { digit: "4", onClick: this.addNum }),
+          React.createElement(Num, { digit: "5", onClick: this.addNum }),
+          React.createElement(Num, { digit: "6", onClick: this.addNum }),
           React.createElement(Op, { op: "-" }),
-          React.createElement(Num, { digit: "1", curNum: this.state.val, onClick: this.addNum }),
-          React.createElement(Num, { digit: "2", curNum: this.state.val, onClick: this.addNum }),
-          React.createElement(Num, { digit: "3", curNum: this.state.val, onClick: this.addNum }),
+          React.createElement(Num, { digit: "1", onClick: this.addNum }),
+          React.createElement(Num, { digit: "2", onClick: this.addNum }),
+          React.createElement(Num, { digit: "3", onClick: this.addNum }),
           React.createElement(Op, { op: "+" }),
-          React.createElement(Num, { digit: "0", curNum: this.state.val, onClick: this.addNum }),
+          React.createElement(Num, { digit: "0", onClick: this.addNum }),
           React.createElement(Dec, null),
           React.createElement(Op, { op: "=" })
         )
