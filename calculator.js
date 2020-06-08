@@ -19,6 +19,12 @@ var Num = function (_React$Component) {
   }
 
   _createClass(Num, [{
+    key: "appendNum",
+    value: function appendNum() {
+      var newNum = this.props.digit;
+      this.props.onClick(newNum);
+    }
+  }, {
     key: "render",
     value: function render() {
       if (this.props.digit !== 0) {
