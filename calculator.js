@@ -83,10 +83,10 @@ var Op = function (_React$Component2) {
 var SpOp = function (_React$Component3) {
   _inherits(SpOp, _React$Component3);
 
-  function SpOp(props) {
+  function SpOp() {
     _classCallCheck(this, SpOp);
 
-    return _possibleConstructorReturn(this, (SpOp.__proto__ || Object.getPrototypeOf(SpOp)).call(this, props));
+    return _possibleConstructorReturn(this, (SpOp.__proto__ || Object.getPrototypeOf(SpOp)).apply(this, arguments));
   }
 
   _createClass(SpOp, [{
@@ -117,7 +117,7 @@ var Dec = function (_React$Component4) {
     value: function render() {
       return React.createElement(
         "button",
-        { type: "button", className: "decimal" },
+        { type: "button", className: "decimal", onClick: this.props.onClick },
         "."
       );
     }
@@ -137,12 +137,22 @@ var Calculator = function (_React$Component5) {
     _this5.state = { // will change state names to make it work with everything just val for now for testing purposes
       val: "0"
     };
+    _this5.clearVal = _this5.clearVal.bind(_this5);
     _this5.toggleParity = _this5.toggleParity.bind(_this5);
     _this5.addNum = _this5.addNum.bind(_this5);
+    _this5.addDec = _this5.addDec.bind(_this5);
     return _this5;
   }
 
   _createClass(Calculator, [{
+    key: "clearVal",
+    value: function clearVal() {
+      this.setState({
+        val: "0",
+        hasDec: false
+      });
+    }
+  }, {
     key: "toggleParity",
     value: function toggleParity() {
       var curVal = this.state.val;
@@ -154,11 +164,13 @@ var Calculator = function (_React$Component5) {
     key: "addNum",
     value: function addNum(digit) {
       var curVal = this.state.val;
-      if (curVal.length === 9) {
-        // add different checks for decimal point and + -
-        this.setState({ //do nothing
-          val: curVal
-        });
+      var absVal = Math.abs(curVal);
+      if (absVal.length === 9 || this.state.hasDec && absVal.length === 10) {
+        //this.setState({ //do nothing
+        //  val: curVal,
+        //  hasDec: false
+        //});
+        //see if things go wrong
       } else if (curVal === "0") {
         this.setState({
           val: digit
@@ -170,8 +182,20 @@ var Calculator = function (_React$Component5) {
       }
     }
   }, {
+    key: "addDec",
+    value: function addDec() {
+      if (!hasDec) {
+        this.setState({
+          val: this.state.val + ".",
+          hasDec: true
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
+      console.log(this.state.val);
+      console.log(this.state.hasDec);
       return React.createElement(
         "div",
         null,
@@ -187,7 +211,8 @@ var Calculator = function (_React$Component5) {
         React.createElement(
           "div",
           { className: "items" },
-          React.createElement(SpOp, { spOp: "C" }),
+          React.createElement(SpOp, { spOp: "C", onClick: this.clearVal }),
+          " // figure out how to switch between CA and C and implement CA",
           React.createElement(SpOp, { spOp: "+/-", onClick: this.toggleParity }),
           React.createElement(SpOp, { spOp: "%" }),
           React.createElement(Op, { op: "/" }),
@@ -204,7 +229,7 @@ var Calculator = function (_React$Component5) {
           React.createElement(Num, { digit: "3", onClick: this.addNum }),
           React.createElement(Op, { op: "+" }),
           React.createElement(Num, { digit: "0", onClick: this.addNum }),
-          React.createElement(Dec, null),
+          React.createElement(Dec, { onClick: this.addDec }),
           React.createElement(Op, { op: "=" })
         )
       );
