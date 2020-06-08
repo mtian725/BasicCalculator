@@ -12,22 +12,34 @@ var Num = function (_React$Component) {
   function Num(props) {
     _classCallCheck(this, Num);
 
-    return _possibleConstructorReturn(this, (Num.__proto__ || Object.getPrototypeOf(Num)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Num.__proto__ || Object.getPrototypeOf(Num)).call(this, props));
+
+    _this.handleChange = _this.handleChange.bind(_this);
+    return _this;
   }
 
+  // temp to check that it works
+
+
   _createClass(Num, [{
+    key: "handleChange",
+    value: function handleChange() {
+      var newNum = this.props.digit;
+      this.props.changeVal(newNum);
+    }
+  }, {
     key: "render",
     value: function render() {
       if (this.props.digit !== 0) {
         return React.createElement(
           "button",
-          { type: "button", className: "num" },
+          { type: "button", className: "num", onClick: this.handleChange },
           this.props.digit
         );
       } else {
         return React.createElement(
           "button",
-          { type: "button", className: "num-z" },
+          { type: "button", className: "num-z", onClick: this.handleChange },
           this.props.digit
         );
       }
@@ -128,10 +140,21 @@ var Calculator = function (_React$Component5) {
     _this5.state = { // will change state names to make it work with everything just val for now for testing purposes
       val: 0
     };
+    _this5.changeVal = _this5.changeVal.bind(_this5);
     return _this5;
   }
 
+  //temporary to check to make sure buttons work
+
+
   _createClass(Calculator, [{
+    key: "changeVal",
+    value: function changeVal(newVal) {
+      this.setState({
+        val: newVal
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement(
@@ -153,19 +176,19 @@ var Calculator = function (_React$Component5) {
           React.createElement(SpOp, { spOp: "+/-" }),
           React.createElement(SpOp, { spOp: "%" }),
           React.createElement(Op, { op: "/" }),
-          React.createElement(Num, { digit: 7 }),
-          React.createElement(Num, { digit: 8 }),
-          React.createElement(Num, { digit: 9 }),
+          React.createElement(Num, { digit: 7, onClick: this.changeVal }),
+          React.createElement(Num, { digit: 8, onClick: this.changeVal }),
+          React.createElement(Num, { digit: 9, onClick: this.changeVal }),
           React.createElement(Op, { op: "x" }),
-          React.createElement(Num, { digit: 4 }),
-          React.createElement(Num, { digit: 5 }),
-          React.createElement(Num, { digit: 6 }),
+          React.createElement(Num, { digit: 4, onClick: this.changeVal }),
+          React.createElement(Num, { digit: 5, onClick: this.changeVal }),
+          React.createElement(Num, { digit: 6, onClick: this.changeVal }),
           React.createElement(Op, { op: "-" }),
-          React.createElement(Num, { digit: 1 }),
-          React.createElement(Num, { digit: 2 }),
-          React.createElement(Num, { digit: 3 }),
+          React.createElement(Num, { digit: 1, onClick: this.changeVal }),
+          React.createElement(Num, { digit: 2, onClick: this.changeVal }),
+          React.createElement(Num, { digit: 3, onClick: this.changeVal }),
           React.createElement(Op, { op: "+" }),
-          React.createElement(Num, { digit: 0 }),
+          React.createElement(Num, { digit: 0, onClick: this.changeVal }),
           React.createElement(Dec, null),
           React.createElement(Op, { op: "=" })
         )
