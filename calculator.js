@@ -173,7 +173,7 @@ var Calculator = function (_React$Component5) {
 
       if (curVal.includes("-")) {
         this.setState({
-          val: curVal.substring(0, curVal.length)
+          val: curVal.substring(1, curVal.length)
         });
       } else {
         this.setState({
@@ -187,7 +187,7 @@ var Calculator = function (_React$Component5) {
       var curVal = this.state.val;
       this.setState({
         val: String(Number(curVal) / 100),
-        hasDec: this.stat.val.includes(".")
+        hasDec: this.state.val.includes(".")
       });
     }
   }, {
