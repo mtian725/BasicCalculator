@@ -4,15 +4,7 @@
   padding: 2rem;
 }
 
-h1.display-2 {
-  text-align: center;
-}
-
-h2.center {
-  text-align: center;
-}
-
-p.center {
+.center {
   text-align: center
 }
 
@@ -43,9 +35,16 @@ p.center {
 .temp-button {
   margin-left: 8px;
   margin-top: 8px;
-  margin-bottom: 8px;
-  width: 64px;
-  height: 64px;
-  border: 2px solid black;
-  border-radius: 50%;
+  width: 83px;
+  height: 83px;
+  border: 3px solid black;
+  border-radius: 2rem;
+}
+
+.temp-bottom-a {
+
+}
+
+.temp-bottom-b {
+
 }
