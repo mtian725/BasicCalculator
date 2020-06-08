@@ -34,30 +34,38 @@ var Calculator = function (_React$Component) {
           "div",
           { className: "items" },
           React.createElement(
-            "div",
-            { className: "grey-button" },
+            "button",
+            { type: "button", className: "button-a" },
             React.createElement(
-              "button",
-              { type: "button", className: "temp-button" },
+              "div",
+              { className: "grey-button" },
               "C"
-            ),
+            )
+          ),
+          React.createElement(
+            "button",
+            { type: "button", className: "button-a" },
             React.createElement(
-              "button",
-              { type: "button", className: "temp-button" },
+              "div",
+              { className: "grey-button" },
               "+/-"
-            ),
+            )
+          ),
+          React.createElement(
+            "button",
+            { type: "button", className: "button-a" },
             React.createElement(
-              "button",
-              { type: "button", className: "temp-button" },
+              "div",
+              { className: "grey-button" },
               "%"
             )
           ),
           React.createElement(
-            "div",
-            { className: "orange-button" },
+            "button",
+            { type: "button", className: "button-a" },
             React.createElement(
-              "button",
-              { type: "button", className: "temp-button" },
+              "div",
+              { className: "orange-button" },
               "/"
             )
           ),
@@ -66,17 +74,17 @@ var Calculator = function (_React$Component) {
             { className: "black-button" },
             React.createElement(
               "button",
-              { type: "button", className: "temp-button" },
+              { type: "button", className: "button-a" },
               "7"
             ),
             React.createElement(
               "button",
-              { type: "button", className: "temp-button" },
+              { type: "button", className: "button-a" },
               "8"
             ),
             React.createElement(
               "button",
-              { type: "button", className: "temp-button" },
+              { type: "button", className: "button-a" },
               "9"
             )
           ),
@@ -85,7 +93,7 @@ var Calculator = function (_React$Component) {
             { className: "orange-button" },
             React.createElement(
               "button",
-              { type: "button", className: "temp-button" },
+              { type: "button", className: "button-a" },
               "x"
             )
           ),
@@ -94,17 +102,17 @@ var Calculator = function (_React$Component) {
             { className: "black-button" },
             React.createElement(
               "button",
-              { type: "button", className: "temp-button" },
+              { type: "button", className: "button-a" },
               "4"
             ),
             React.createElement(
               "button",
-              { type: "button", className: "temp-button" },
+              { type: "button", className: "button-a" },
               "5"
             ),
             React.createElement(
               "button",
-              { type: "button", className: "temp-button" },
+              { type: "button", className: "button-a" },
               "6"
             )
           ),
@@ -113,7 +121,7 @@ var Calculator = function (_React$Component) {
             { className: "orange-button" },
             React.createElement(
               "button",
-              { type: "button", className: "temp-button" },
+              { type: "button", className: "button-a" },
               "-"
             )
           ),
@@ -122,17 +130,17 @@ var Calculator = function (_React$Component) {
             { className: "black-button" },
             React.createElement(
               "button",
-              { type: "button", className: "temp-button" },
+              { type: "button", className: "button-a" },
               "1"
             ),
             React.createElement(
               "button",
-              { type: "button", className: "temp-button" },
+              { type: "button", className: "button-a" },
               "2"
             ),
             React.createElement(
               "button",
-              { type: "button", className: "temp-button" },
+              { type: "button", className: "button-a" },
               "3"
             )
           ),
@@ -141,7 +149,7 @@ var Calculator = function (_React$Component) {
             { className: "orange-button" },
             React.createElement(
               "button",
-              { type: "button", className: "temp-button" },
+              { type: "button", className: "button-a" },
               "+"
             )
           ),
@@ -150,12 +158,12 @@ var Calculator = function (_React$Component) {
             { className: "black-button" },
             React.createElement(
               "button",
-              { type: "button", className: "temp-bottom-a" },
+              { type: "button", className: "b-bottom-a" },
               "0"
             ),
             React.createElement(
               "button",
-              { type: "button", className: "temp-bottom-b" },
+              { type: "button", className: "b-bottom-b" },
               "."
             )
           ),
@@ -164,7 +172,7 @@ var Calculator = function (_React$Component) {
             { className: "orange-button" },
             React.createElement(
               "button",
-              { type: "button", className: "temp-bottom-b" },
+              { type: "button", className: "b-bottom-b" },
               "="
             )
           )
