@@ -1,6 +1,4 @@
 
-import '../styles';
-
 class Calculator extends React.Component {
   render() {
     return (
