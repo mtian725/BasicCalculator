@@ -21,7 +21,7 @@ var Num = function (_React$Component) {
       return React.createElement(
         "button",
         { type: "button", className: "num" },
-        this.props.num
+        this.props.digit
       );
     }
   }]);
@@ -37,8 +37,8 @@ var Calculator = function (_React$Component2) {
 
     var _this2 = _possibleConstructorReturn(this, (Calculator.__proto__ || Object.getPrototypeOf(Calculator)).call(this, props));
 
-    _this2.state = { // will change state names to make it work with everything just num for now for testing purposes
-      num: 0
+    _this2.state = { // will change state names to make it work with everything just val for now for testing purposes
+      val: 0
     };
     return _this2;
   }
@@ -55,7 +55,7 @@ var Calculator = function (_React$Component2) {
           React.createElement(
             "p",
             null,
-            this.state.num
+            this.state.val
           )
         ),
         React.createElement(
@@ -81,25 +81,25 @@ var Calculator = function (_React$Component2) {
             { type: "button", className: "func" },
             "/"
           ),
-          React.createElement(Num, { num: 7 }),
-          React.createElement(Num, { num: 8 }),
-          React.createElement(Num, { num: 9 }),
+          React.createElement(Num, { digit: 7 }),
+          React.createElement(Num, { digit: 8 }),
+          React.createElement(Num, { digit: 9 }),
           React.createElement(
             "button",
             { type: "button", className: "func" },
             "x"
           ),
-          React.createElement(Num, { num: 4 }),
-          React.createElement(Num, { num: 5 }),
-          React.createElement(Num, { num: 6 }),
+          React.createElement(Num, { digit: 4 }),
+          React.createElement(Num, { digit: 5 }),
+          React.createElement(Num, { digit: 6 }),
           React.createElement(
             "button",
             { type: "button", className: "func" },
             "-"
           ),
-          React.createElement(Num, { num: 1 }),
-          React.createElement(Num, { num: 2 }),
-          React.createElement(Num, { num: 3 }),
+          React.createElement(Num, { digit: 1 }),
+          React.createElement(Num, { digit: 2 }),
+          React.createElement(Num, { digit: 3 }),
           React.createElement(
             "button",
             { type: "button", className: "func" },
