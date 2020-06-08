@@ -70,10 +70,13 @@ class Calculator extends React.Component {
     super(props);
     this.state = { // will change state names to make it work with everything just val for now for testing purposes
       val: "0",
+      prev: "None",
       hasDec: false,
+      operator: "None"
     };
     this.clearVal = this.clearVal.bind(this);
     this.toggleParity = this.toggleParity.bind(this);
+    this.addHundredths = this.addHundredths.bind(this);
     this.addNum = this.addNum.bind(this);
     this.addDec = this.addDec.bind(this);
   }
@@ -92,9 +95,17 @@ class Calculator extends React.Component {
     });
   }
 
+  addHundredths() {
+    const curVal = this.state.val;
+    this.setState({
+      val: String(Number(curVal)/100),
+      hasDec: true
+    });
+  }
+
   addNum(digit) {
     const curVal = this.state.val;
-    const absVal = Math.abs(Number(curVal));
+    const absVal = String(Math.abs(Number(curVal)));
     if ((absVal.length === 9) || (this.state.hasDec && absVal.length === 10)) {
       //this.setState({ //do nothing
       //  val: curVal,
@@ -134,7 +145,7 @@ class Calculator extends React.Component {
         <div className="items">
           <SpOp spOp="C" onClick={this.clearVal}/>
           <SpOp spOp="+/-" onClick={this.toggleParity}/>
-          <SpOp spOp="%" />
+          <SpOp spOp="%" onClick={this.addHundredths}/>
           <Op op="/"/>
 
           <Num digit="7" onClick={this.addNum} />
