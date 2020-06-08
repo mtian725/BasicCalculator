@@ -171,16 +171,16 @@ class Calculator extends React.Component {
 
     // if it was in exponential form, convert to decimal
     if (this.state.val.indexOf("e-") > 0) {
-      decVal = String(Number(this.state.val).toFixed(12)); // check if 11 works
+      decVal = String(Number(this.state.val).toFixed(11)); // check if 11 works
     }
     else {
       decVal = this.state.val;
     }
 
-    if (this.state.val.includes("-") && this.state.val.includes(".")) {
+    if (decVal.includes("-") && decVal.includes(".")) {
       formattedNum = decVal.substring(0,11); // 9 digits + 1 decimal + 1 sign
     }
-    else if (this.state.val.includes("-") || this.state.val.includes(".")) {
+    else if (decVal.includes("-") || decVal.includes(".")) {
       formattedNum = decVal.substring(0,10); // 9 digits + 1 decimal/sign
     }
     else {
