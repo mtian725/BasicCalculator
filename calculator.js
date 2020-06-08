@@ -25,7 +25,7 @@ var Num = function (_React$Component) {
     key: "handleChange",
     value: function handleChange() {
       var newNum = this.props.digit;
-      this.props.changeVal(newNum);
+      this.props.onClick(newNum);
     }
   }, {
     key: "render",
