@@ -6,7 +6,12 @@ class Num extends React.Component {
   }
 
   render () {
-    return <button type="button" className="num">{this.props.digit}</button>
+    if (this.props.digit !== 0) {
+      return <button type="button" className="num">{this.props.digit}</button>;
+    }
+    else {
+      return <button type="button" className="num-z">{this.props.digit}</button>;
+    }
   }
 }
 
@@ -17,7 +22,28 @@ class Op extends React.Component {
   }
 
   render () {
-    return <button type="button" className="func">{this.props.op}</button>
+    if (this.props.op !== "=") {
+      return <button type="button" className="func">{this.props.op}</button>;
+    }
+    else {
+      return <button type="button" className="func-b">{this.props.op}</button>;
+    }
+  }
+}
+
+class SpOp extends React.Component {
+  constructor (props) {
+    super(props);
+  }
+
+  render () {
+    return <button type="button" className="special-func">{this.props.spOp}</button>;
+  }
+}
+
+class Dec extends React.Component {
+  render () {
+    <button type="button" className="decimal">.</button>
   }
 }
 
@@ -36,9 +62,9 @@ class Calculator extends React.Component {
           <p>{this.state.val}</p>
         </div>
         <div className="items">
-          <button type="button" className="special-func">C</button>
-          <button type="button" className="special-func">+/-</button>
-          <button type="button" className="special-func">%</button>
+          <SpOp spOp="C" />
+          <SpOp spOp="+/-" />
+          <SpOp spOp="%" />
           <Op op="/"/>
 
           <Num digit={7} />
@@ -56,9 +82,9 @@ class Calculator extends React.Component {
           <Num digit={3} />
           <Op op="+"/>
 
-          <button type="button" className="num-z">0</button>
-          <button type="button" className="decimal">.</button>
-          <button type="button" className="func-b">=</button>
+          <Num digit={0} />
+          <Dec />
+          <Op op="="/>
         </div>
       </div>
     );
