@@ -27,7 +27,7 @@ var Num = function (_React$Component) {
   }, {
     key: "shouldComponentUpdate",
     value: function shouldComponentUpdate(nextProps, nextState) {
-      console.log(this.state.val);
+      console.log(this.props.curNum);
       return true;
     }
   }, {
@@ -183,19 +183,19 @@ var Calculator = function (_React$Component5) {
           React.createElement(SpOp, { spOp: "+/-" }),
           React.createElement(SpOp, { spOp: "%" }),
           React.createElement(Op, { op: "/" }),
-          React.createElement(Num, { digit: "7", onClick: this.addNum }),
-          React.createElement(Num, { digit: "8", onClick: this.addNum }),
-          React.createElement(Num, { digit: "9", onClick: this.addNum }),
+          React.createElement(Num, { digit: "7", curNum: this.state.val, onClick: this.addNum }),
+          React.createElement(Num, { digit: "8", curNum: this.state.val, onClick: this.addNum }),
+          React.createElement(Num, { digit: "9", curNum: this.state.val, onClick: this.addNum }),
           React.createElement(Op, { op: "x" }),
-          React.createElement(Num, { digit: "4", onClick: this.addNum }),
-          React.createElement(Num, { digit: "5", onClick: this.addNum }),
-          React.createElement(Num, { digit: "6", onClick: this.addNum }),
+          React.createElement(Num, { digit: "4", curNum: this.state.val, onClick: this.addNum }),
+          React.createElement(Num, { digit: "5", curNum: this.state.val, onClick: this.addNum }),
+          React.createElement(Num, { digit: "6", curNum: this.state.val, onClick: this.addNum }),
           React.createElement(Op, { op: "-" }),
-          React.createElement(Num, { digit: "1", onClick: this.addNum }),
-          React.createElement(Num, { digit: "2", onClick: this.addNum }),
-          React.createElement(Num, { digit: "3", onClick: this.addNum }),
+          React.createElement(Num, { digit: "1", curNum: this.state.val, onClick: this.addNum }),
+          React.createElement(Num, { digit: "2", curNum: this.state.val, onClick: this.addNum }),
+          React.createElement(Num, { digit: "3", curNum: this.state.val, onClick: this.addNum }),
           React.createElement(Op, { op: "+" }),
-          React.createElement(Num, { digit: "0", onClick: this.addNum }),
+          React.createElement(Num, { digit: "0", curNum: this.state.val, onClick: this.addNum }),
           React.createElement(Dec, null),
           React.createElement(Op, { op: "=" })
         )
