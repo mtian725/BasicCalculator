@@ -10,13 +10,13 @@ class Calculator extends React.Component {
           <p>something</p>
         </div>
         <div style="items">
-          <button style="temp-button">1</button>
-          <button style="temp-button">2</button>
-          <button style="temp-button">3</button>
-          <button style="temp-button">4</button>
-          <button style="temp-bottom-a">5</button>
-          <button style="temp-bottom-b">6</button>
-          <button style="temp-bottom-b">7</button>
+          <button type="button" style="temp-button">1</button>
+          <button type="button" style="temp-button">2</button>
+          <button type="button" style="temp-button">3</button>
+          <button type="button" style="temp-button">4</button>
+          <button type="button" style="temp-bottom-a">5</button>
+          <button type="button" style="temp-bottom-b">6</button>
+          <button type="button" style="temp-bottom-b">7</button>
         </div>
       </div>
     );
