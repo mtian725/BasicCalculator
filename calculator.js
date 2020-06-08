@@ -165,12 +165,12 @@ var Calculator = function (_React$Component5) {
     key: "addNum",
     value: function addNum(digit) {
       var curVal = this.state.val;
-      var absVal = Math.abs(curVal);
+      var absVal = Math.abs(Number(curVal));
       if (absVal.length === 9 || this.state.hasDec && absVal.length === 10) {
-        this.setState({ //do nothing
-          val: curVal,
-          hasDec: false
-        });
+        //this.setState({ //do nothing
+        //  val: curVal,
+        //  hasDec: false
+        //});
         //see if things go wrong
       } else if (curVal === "0") {
         this.setState({
@@ -185,7 +185,7 @@ var Calculator = function (_React$Component5) {
   }, {
     key: "addDec",
     value: function addDec() {
-      if (!hasDec) {
+      if (!this.state.hasDec) {
         this.setState({
           val: this.state.val + ".",
           hasDec: true
