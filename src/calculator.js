@@ -108,7 +108,7 @@ class Calculator extends React.Component {
 
     if (curVal.includes("-")) {
       this.setState({
-        val: curVal.substring(0, curVal.length)
+        val: curVal.substring(1, curVal.length)
       });
     }
     else {
@@ -122,7 +122,7 @@ class Calculator extends React.Component {
     const curVal = this.state.val;
     this.setState({
       val: String(Number(curVal)/100),
-      hasDec: (this.stat.val.includes("."))
+      hasDec: (this.state.val.includes("."))
     });
   }
 
