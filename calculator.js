@@ -11,10 +11,15 @@ import { Number } from './number';
 var Calculator = function (_React$Component) {
   _inherits(Calculator, _React$Component);
 
-  function Calculator() {
+  function Calculator(props) {
     _classCallCheck(this, Calculator);
 
-    return _possibleConstructorReturn(this, (Calculator.__proto__ || Object.getPrototypeOf(Calculator)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Calculator.__proto__ || Object.getPrototypeOf(Calculator)).call(this, props));
+
+    _this.state = { // will change state names to make it work with everything just num for now for testing purposes
+      num: 0
+    };
+    return _this;
   }
 
   _createClass(Calculator, [{
@@ -29,7 +34,7 @@ var Calculator = function (_React$Component) {
           React.createElement(
             "p",
             null,
-            "something"
+            this.state.num
           )
         ),
         React.createElement(
@@ -56,56 +61,24 @@ var Calculator = function (_React$Component) {
             "/"
           ),
           React.createElement(Number, { number: 7 }),
-          React.createElement(
-            "button",
-            { type: "button", className: "num" },
-            "8"
-          ),
-          React.createElement(
-            "button",
-            { type: "button", className: "num" },
-            "9"
-          ),
+          React.createElement(Number, { number: 8 }),
+          React.createElement(Number, { number: 9 }),
           React.createElement(
             "button",
             { type: "button", className: "func" },
             "x"
           ),
-          React.createElement(
-            "button",
-            { type: "button", className: "num" },
-            "4"
-          ),
-          React.createElement(
-            "button",
-            { type: "button", className: "num" },
-            "5"
-          ),
-          React.createElement(
-            "button",
-            { type: "button", className: "num" },
-            "6"
-          ),
+          React.createElement(Number, { number: 4 }),
+          React.createElement(Number, { number: 5 }),
+          React.createElement(Number, { number: 6 }),
           React.createElement(
             "button",
             { type: "button", className: "func" },
             "-"
           ),
-          React.createElement(
-            "button",
-            { type: "button", className: "num" },
-            "1"
-          ),
-          React.createElement(
-            "button",
-            { type: "button", className: "num" },
-            "2"
-          ),
-          React.createElement(
-            "button",
-            { type: "button", className: "num" },
-            "3"
-          ),
+          React.createElement(Number, { number: 1 }),
+          React.createElement(Number, { number: 2 }),
+          React.createElement(Number, { number: 3 }),
           React.createElement(
             "button",
             { type: "button", className: "func" },
