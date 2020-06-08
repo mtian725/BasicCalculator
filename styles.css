@@ -3,3 +3,11 @@
   justify-content: center;
   padding: 15px;
 }
+
+h1.center {
+  justify-content: center;
+}
+
+p.center {
+  justify-content: center;
+}
