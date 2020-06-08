@@ -30,7 +30,7 @@
   flex-flow: wrap;
 }
 
-.temp-button {
+.button-a {
   margin-left: 8px;
   margin-top: 8px;
   width: 83px;
@@ -41,7 +41,7 @@
   font-weight: bold;
 }
 
-.temp-bottom-a {
+.b-bottom-a { /* b refering to bottom */
   margin-left: 8px;
   margin-top: 8px;
   margin-bottom: 8px;
@@ -53,7 +53,7 @@
   font-weight: bold;
 }
 
-.temp-bottom-b {
+.b-bottom-b {
   margin-left: 8px;
   margin-top: 8px;
   margin-bottom: 8px;
