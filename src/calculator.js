@@ -171,7 +171,7 @@ class Calculator extends React.Component {
 
     // if it was in exponential form, convert to decimal
     if (this.state.val.indexOf("e-") > 0) {
-      decVal = String(Number(this.state.val).toFixed(10));
+      decVal = String(Number(this.state.val).toFixed(11)); // check if 11 works
     }
     else {
       decVal = this.state.val;
