@@ -9,7 +9,7 @@ class Num extends React.Component {
   // temp to check that it works
   handleChange() {
     const newNum = this.props.digit;
-    this.props.changeVal(newNum);
+    this.props.onClick(newNum);
   }
 
   render () {
