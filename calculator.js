@@ -135,7 +135,8 @@ var Calculator = function (_React$Component5) {
     var _this5 = _possibleConstructorReturn(this, (Calculator.__proto__ || Object.getPrototypeOf(Calculator)).call(this, props));
 
     _this5.state = { // will change state names to make it work with everything just val for now for testing purposes
-      val: "0"
+      val: "0",
+      hasDec: false
     };
     _this5.clearVal = _this5.clearVal.bind(_this5);
     _this5.toggleParity = _this5.toggleParity.bind(_this5);
@@ -166,10 +167,10 @@ var Calculator = function (_React$Component5) {
       var curVal = this.state.val;
       var absVal = Math.abs(curVal);
       if (absVal.length === 9 || this.state.hasDec && absVal.length === 10) {
-        //this.setState({ //do nothing
-        //  val: curVal,
-        //  hasDec: false
-        //});
+        this.setState({ //do nothing
+          val: curVal,
+          hasDec: false
+        });
         //see if things go wrong
       } else if (curVal === "0") {
         this.setState({
@@ -194,6 +195,7 @@ var Calculator = function (_React$Component5) {
   }, {
     key: "render",
     value: function render() {
+      // figure out how to switch between CA and C and implement CA
       console.log(this.state.val);
       console.log(this.state.hasDec);
       return React.createElement(
@@ -212,7 +214,6 @@ var Calculator = function (_React$Component5) {
           "div",
           { className: "items" },
           React.createElement(SpOp, { spOp: "C", onClick: this.clearVal }),
-          " // figure out how to switch between CA and C and implement CA",
           React.createElement(SpOp, { spOp: "+/-", onClick: this.toggleParity }),
           React.createElement(SpOp, { spOp: "%" }),
           React.createElement(Op, { op: "/" }),
