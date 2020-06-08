@@ -6,16 +6,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Number = function (_React$Component) {
-  _inherits(Number, _React$Component);
+var Num = function (_React$Component) {
+  _inherits(Num, _React$Component);
 
-  function Number(props) {
-    _classCallCheck(this, Number);
+  function Num(props) {
+    _classCallCheck(this, Num);
 
-    return _possibleConstructorReturn(this, (Number.__proto__ || Object.getPrototypeOf(Number)).call(this, props));
+    return _possibleConstructorReturn(this, (Num.__proto__ || Object.getPrototypeOf(Num)).call(this, props));
   }
 
-  _createClass(Number, [{
+  _createClass(Num, [{
     key: "render",
     value: function render() {
       return React.createElement(
@@ -26,7 +26,7 @@ var Number = function (_React$Component) {
     }
   }]);
 
-  return Number;
+  return Num;
 }(React.Component);
 
 var Calculator = function (_React$Component2) {
@@ -81,25 +81,25 @@ var Calculator = function (_React$Component2) {
             { type: "button", className: "func" },
             "/"
           ),
-          React.createElement(Number, { number: "7" }),
-          React.createElement(Number, { number: 8 }),
-          React.createElement(Number, { number: 9 }),
+          React.createElement(Num, { number: 7 }),
+          React.createElement(Num, { number: 8 }),
+          React.createElement(Num, { number: 9 }),
           React.createElement(
             "button",
             { type: "button", className: "func" },
             "x"
           ),
-          React.createElement(Number, { number: 4 }),
-          React.createElement(Number, { number: 5 }),
-          React.createElement(Number, { number: 6 }),
+          React.createElement(Num, { number: 4 }),
+          React.createElement(Num, { number: 5 }),
+          React.createElement(Num, { number: 6 }),
           React.createElement(
             "button",
             { type: "button", className: "func" },
             "-"
           ),
-          React.createElement(Number, { number: 1 }),
-          React.createElement(Number, { number: 2 }),
-          React.createElement(Number, { number: 3 }),
+          React.createElement(Num, { number: 1 }),
+          React.createElement(Num, { number: 2 }),
+          React.createElement(Num, { number: 3 }),
           React.createElement(
             "button",
             { type: "button", className: "func" },
