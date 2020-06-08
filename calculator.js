@@ -36,6 +36,66 @@ var Calculator = function (_React$Component) {
           React.createElement(
             "button",
             { type: "button", className: "temp-button" },
+            "C"
+          ),
+          React.createElement(
+            "button",
+            { type: "button", className: "temp-button" },
+            "+/-"
+          ),
+          React.createElement(
+            "button",
+            { type: "button", className: "temp-button" },
+            "%"
+          ),
+          React.createElement(
+            "button",
+            { type: "button", className: "temp-button" },
+            "/"
+          ),
+          React.createElement(
+            "button",
+            { type: "button", className: "temp-button" },
+            "7"
+          ),
+          React.createElement(
+            "button",
+            { type: "button", className: "temp-button" },
+            "8"
+          ),
+          React.createElement(
+            "button",
+            { type: "button", className: "temp-button" },
+            "9"
+          ),
+          React.createElement(
+            "button",
+            { type: "button", className: "temp-button" },
+            "x"
+          ),
+          React.createElement(
+            "button",
+            { type: "button", className: "temp-button" },
+            "4"
+          ),
+          React.createElement(
+            "button",
+            { type: "button", className: "temp-button" },
+            "5"
+          ),
+          React.createElement(
+            "button",
+            { type: "button", className: "temp-button" },
+            "6"
+          ),
+          React.createElement(
+            "button",
+            { type: "button", className: "temp-button" },
+            "-"
+          ),
+          React.createElement(
+            "button",
+            { type: "button", className: "temp-button" },
             "1"
           ),
           React.createElement(
@@ -51,22 +111,22 @@ var Calculator = function (_React$Component) {
           React.createElement(
             "button",
             { type: "button", className: "temp-button" },
-            "4"
+            "+"
           ),
           React.createElement(
             "button",
             { type: "button", className: "temp-bottom-a" },
-            "5"
+            "0"
           ),
           React.createElement(
             "button",
             { type: "button", className: "temp-bottom-b" },
-            "6"
+            "."
           ),
           React.createElement(
             "button",
             { type: "button", className: "temp-bottom-b" },
-            "7"
+            "="
           )
         )
       );
