@@ -81,25 +81,25 @@ var Calculator = function (_React$Component2) {
             { type: "button", className: "func" },
             "/"
           ),
-          React.createElement(Num, { number: 7 }),
-          React.createElement(Num, { number: 8 }),
-          React.createElement(Num, { number: 9 }),
+          React.createElement(Num, { num: 7 }),
+          React.createElement(Num, { num: 8 }),
+          React.createElement(Num, { num: 9 }),
           React.createElement(
             "button",
             { type: "button", className: "func" },
             "x"
           ),
-          React.createElement(Num, { number: 4 }),
-          React.createElement(Num, { number: 5 }),
-          React.createElement(Num, { number: 6 }),
+          React.createElement(Num, { num: 4 }),
+          React.createElement(Num, { num: 5 }),
+          React.createElement(Num, { num: 6 }),
           React.createElement(
             "button",
             { type: "button", className: "func" },
             "-"
           ),
-          React.createElement(Num, { number: 1 }),
-          React.createElement(Num, { number: 2 }),
-          React.createElement(Num, { number: 3 }),
+          React.createElement(Num, { num: 1 }),
+          React.createElement(Num, { num: 2 }),
+          React.createElement(Num, { num: 3 }),
           React.createElement(
             "button",
             { type: "button", className: "func" },
