@@ -30,8 +30,6 @@
   flex-flow: wrap;
 }
 
-/* remove and code into react */
-/* total button size 68px */
 .temp-button {
   margin-left: 8px;
   margin-top: 8px;
@@ -65,4 +63,19 @@
   border-radius: 2rem;
   font-size: 200%;
   font-weight: bold;
+}
+
+.grey-button {
+  background-color: #bdbdbd;
+  color: black;
+}
+
+.orange-button {
+  background-color: #fcb321;
+  color: white;
+}
+
+.black-button {
+  background-color: #4a4a4a;
+  color: white;
 }
