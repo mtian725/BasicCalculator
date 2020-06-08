@@ -31,17 +31,27 @@ class Num extends React.Component {
 
 // short for operator
 class Op extends React.Component {
+  constructor(props) {
+    super(props);
+    this.toggleOperation = this.toggleOperation.bind(this);
+  }
+
+  toggleOperation() {
+    const newOp = this.props.op;
+    this.props.onClick(newOp);
+  }
+
   render () {
     if (this.props.op !== "=") {
       return (
-        <button type="button" className="func" onClick={this.props.onClick}>
+        <button type="button" className="func" onClick={this.toggleOperation}>
           {this.props.op}
         </button>
       );
     }
     else {
       return (
-        <button type="button" className="func-b" onClick={this.props.onClick}>
+        <button type="button" className="func-b" onClick={this.toggleOperation}>
           {this.props.op}
         </button>
       );
@@ -95,16 +105,15 @@ class Calculator extends React.Component {
 
   toggleParity() {
     const curVal = this.state.val;
-    const newVal = String(Number(curVal) * -1);
 
-    if (("-" + curVal) !== newVal) {
+    if (curVal.includes("-")) {
       this.setState({
-        val: newVal + "."
+        val: curVal.substring(0, curVal.length)
       });
     }
     else {
       this.setState({
-        val: newVal
+        val: "-" + curVal
       });
     }
   }
@@ -113,7 +122,7 @@ class Calculator extends React.Component {
     const curVal = this.state.val;
     this.setState({
       val: String(Number(curVal)/100),
-      hasDec: true
+      hasDec: (this.stat.val.includes("."))
     });
   }
 
@@ -135,12 +144,7 @@ class Calculator extends React.Component {
       });
     }
   }
-  // Has a weird bug where if at 9 digits you add a decimal point and change to
-  // negative, hasDec will stay as true, meaning that you can't add another
-  // decimal point ever again but it doens't matter appart from visually
-  // because they would not be able to anyways
 
-  // actually scratch that it is an error
   addDec() {
     if (!this.state.hasDec) {
       this.setState({
@@ -150,29 +154,26 @@ class Calculator extends React.Component {
     }
   }
 
-  calcOp() {
-
+  calcOp(op) {
+    console.log(op);
   }
 
+  // keep in mind that some math (division so far) isnt exact and can result in crazy crazy decimals, so that might cause the final value when you do math to be off
+  // super small values (ones that get formatted to 0.00000000) still have a value just not visably seen.
   render () { // figure out how to switch between CA and C and implement CA
     console.log(this.state.val);
     console.log(this.state.hasDec);
 
-    const absVal = Math.abs(Number(this.state.val));
-    const number = Number(this.state.val);
-    const hasDeci = this.state.hasDec;
     let formattedNum;
-    if (number < 0 && hasDeci) {
-      formattedNum = "-" + String(absVal).substring(0,10);
+
+    if (this.state.val.includes("-") && this.state.val.includes(".")) {
+      formattedNum = this.state.val.substring(0,11); // 9 digits + 1 decimal + 1 sign
     }
-    else if (number >= 0 && hasDeci) {
-      formattedNum = String(absVal).substring(0,10);
-    }
-    else if (number < 0 && !hasDeci) {
-      formattedNum = "-" + String(absVal).substring(0,9);
+    else if (this.state.val.includes("-") || this.state.val.includes(".")) {
+      formattedNum = this.state.val.substring(0,10); // 9 digits + 1 decimal/sign
     }
     else {
-      formattedNum = String(absVal).substring(0,9);
+      formattedNum = this.state.val.substring(0,9); // 9 digits
     }
 
     return (
@@ -184,17 +185,17 @@ class Calculator extends React.Component {
           <SpOp spOp="C" onClick={this.clearVal} />
           <SpOp spOp="+/-" onClick={this.toggleParity} />
           <SpOp spOp="%" onClick={this.addHundredths} />
-          <Op op="/"/>
+          <Op op="/" onClick={this.calcOp} />
 
           <Num digit="7" onClick={this.addNum} />
           <Num digit="8" onClick={this.addNum} />
           <Num digit="9" onClick={this.addNum} />
-          <Op op="x"/>
+          <Op op="x" onClick={this.calcOp} />
 
           <Num digit="4" onClick={this.addNum} />
           <Num digit="5" onClick={this.addNum} />
           <Num digit="6" onClick={this.addNum} />
-          <Op op="-"/>
+          <Op op="-" onClick={this.calcOp} />
 
           <Num digit="1" onClick={this.addNum} />
           <Num digit="2" onClick={this.addNum} />
@@ -203,7 +204,7 @@ class Calculator extends React.Component {
 
           <Num digit="0" onClick={this.addNum} />
           <Dec onClick={this.addDec}/>
-          <Op op="="/>
+          <Op op="=" onClick={this.calcOp} />
         </div>
       </div>
     );
