@@ -39,6 +39,8 @@
   height: 83px;
   border: 3px solid black;
   border-radius: 2rem;
+  font-size: 200%;
+  font-weight: bold;
 }
 
 .temp-bottom-a {
@@ -49,6 +51,8 @@
   height: 83px;
   border: 3px solid black;
   border-radius: 2rem;
+  font-size: 200%;
+  font-weight: bold;
 }
 
 .temp-bottom-b {
@@ -59,4 +63,6 @@
   height: 83px;
   border: 3px solid black;
   border-radius: 2rem;
+  font-size: 200%;
+  font-weight: bold;
 }
