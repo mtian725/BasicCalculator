@@ -52,25 +52,34 @@ var Num = function (_React$Component) {
 var Op = function (_React$Component2) {
   _inherits(Op, _React$Component2);
 
-  function Op() {
+  function Op(props) {
     _classCallCheck(this, Op);
 
-    return _possibleConstructorReturn(this, (Op.__proto__ || Object.getPrototypeOf(Op)).apply(this, arguments));
+    var _this2 = _possibleConstructorReturn(this, (Op.__proto__ || Object.getPrototypeOf(Op)).call(this, props));
+
+    _this2.toggleOperation = _this2.toggleOperation.bind(_this2);
+    return _this2;
   }
 
   _createClass(Op, [{
+    key: "toggleOperation",
+    value: function toggleOperation() {
+      var newOp = this.props.op;
+      this.props.onClick(newOp);
+    }
+  }, {
     key: "render",
     value: function render() {
       if (this.props.op !== "=") {
         return React.createElement(
           "button",
-          { type: "button", className: "func", onClick: this.props.onClick },
+          { type: "button", className: "func", onClick: this.toggleOperation },
           this.props.op
         );
       } else {
         return React.createElement(
           "button",
-          { type: "button", className: "func-b", onClick: this.props.onClick },
+          { type: "button", className: "func-b", onClick: this.toggleOperation },
           this.props.op
         );
       }
@@ -161,15 +170,14 @@ var Calculator = function (_React$Component5) {
     key: "toggleParity",
     value: function toggleParity() {
       var curVal = this.state.val;
-      var newVal = String(Number(curVal) * -1);
 
-      if ("-" + curVal !== newVal) {
+      if (curVal.includes("-")) {
         this.setState({
-          val: newVal + "."
+          val: curVal.substring(0, curVal.length)
         });
       } else {
         this.setState({
-          val: newVal
+          val: "-" + curVal
         });
       }
     }
@@ -179,7 +187,7 @@ var Calculator = function (_React$Component5) {
       var curVal = this.state.val;
       this.setState({
         val: String(Number(curVal) / 100),
-        hasDec: true
+        hasDec: this.stat.val.includes(".")
       });
     }
   }, {
@@ -199,13 +207,6 @@ var Calculator = function (_React$Component5) {
         });
       }
     }
-    // Has a weird bug where if at 9 digits you add a decimal point and change to
-    // negative, hasDec will stay as true, meaning that you can't add another
-    // decimal point ever again but it doens't matter appart from visually
-    // because they would not be able to anyways
-
-    // actually scratch that it is an error
-
   }, {
     key: "addDec",
     value: function addDec() {
@@ -218,7 +219,13 @@ var Calculator = function (_React$Component5) {
     }
   }, {
     key: "calcOp",
-    value: function calcOp() {}
+    value: function calcOp(op) {
+      console.log(op);
+    }
+
+    // keep in mind that some math (division so far) isnt exact and can result in crazy crazy decimals, so that might cause the final value when you do math to be off
+    // super small values (ones that get formatted to 0.00000000) still have a value just not visably seen.
+
   }, {
     key: "render",
     value: function render() {
@@ -226,18 +233,14 @@ var Calculator = function (_React$Component5) {
       console.log(this.state.val);
       console.log(this.state.hasDec);
 
-      var absVal = Math.abs(Number(this.state.val));
-      var number = Number(this.state.val);
-      var hasDeci = this.state.hasDec;
       var formattedNum = void 0;
-      if (number < 0 && hasDeci) {
-        formattedNum = "-" + String(absVal).substring(0, 10);
-      } else if (number >= 0 && hasDeci) {
-        formattedNum = String(absVal).substring(0, 10);
-      } else if (number < 0 && !hasDeci) {
-        formattedNum = "-" + String(absVal).substring(0, 9);
+
+      if (this.state.val.includes("-") && this.state.val.includes(".")) {
+        formattedNum = this.state.val.substring(0, 11); // 9 digits + 1 decimal + 1 sign
+      } else if (this.state.val.includes("-") || this.state.val.includes(".")) {
+        formattedNum = this.state.val.substring(0, 10); // 9 digits + 1 decimal/sign
       } else {
-        formattedNum = String(absVal).substring(0, 9);
+        formattedNum = this.state.val.substring(0, 9); // 9 digits
       }
 
       return React.createElement(
@@ -258,22 +261,22 @@ var Calculator = function (_React$Component5) {
           React.createElement(SpOp, { spOp: "C", onClick: this.clearVal }),
           React.createElement(SpOp, { spOp: "+/-", onClick: this.toggleParity }),
           React.createElement(SpOp, { spOp: "%", onClick: this.addHundredths }),
-          React.createElement(Op, { op: "/" }),
+          React.createElement(Op, { op: "/", onClick: this.calcOp }),
           React.createElement(Num, { digit: "7", onClick: this.addNum }),
           React.createElement(Num, { digit: "8", onClick: this.addNum }),
           React.createElement(Num, { digit: "9", onClick: this.addNum }),
-          React.createElement(Op, { op: "x" }),
+          React.createElement(Op, { op: "x", onClick: this.calcOp }),
           React.createElement(Num, { digit: "4", onClick: this.addNum }),
           React.createElement(Num, { digit: "5", onClick: this.addNum }),
           React.createElement(Num, { digit: "6", onClick: this.addNum }),
-          React.createElement(Op, { op: "-" }),
+          React.createElement(Op, { op: "-", onClick: this.calcOp }),
           React.createElement(Num, { digit: "1", onClick: this.addNum }),
           React.createElement(Num, { digit: "2", onClick: this.addNum }),
           React.createElement(Num, { digit: "3", onClick: this.addNum }),
           React.createElement(Op, { op: "+", onClick: this.calcOp }),
           React.createElement(Num, { digit: "0", onClick: this.addNum }),
           React.createElement(Dec, { onClick: this.addDec }),
-          React.createElement(Op, { op: "=" })
+          React.createElement(Op, { op: "=", onClick: this.calcOp })
         )
       );
     }
