@@ -2,11 +2,18 @@
 import { Number } from './number';
 
 class Calculator extends React.Component {
-  render() {
+  constructor (props) {
+    super(props);
+    this.state = { // will change state names to make it work with everything just num for now for testing purposes
+      num: 0
+    };
+  }
+
+  render () {
     return (
       <div>
         <div className="screen">
-          <p>something</p>
+          <p>{this.state.num}</p>
         </div>
         <div className="items">
           <button type="button" className="special-func">C</button>
@@ -15,18 +22,18 @@ class Calculator extends React.Component {
           <button type="button" className="func">/</button>
 
           <Number number={7} />
-          <button type="button" className="num">8</button>
-          <button type="button" className="num">9</button>
+          <Number number={8} />
+          <Number number={9} />
           <button type="button" className="func">x</button>
 
-          <button type="button" className="num">4</button>
-          <button type="button" className="num">5</button>
-          <button type="button" className="num">6</button>
+          <Number number={4} />
+          <Number number={5} />
+          <Number number={6} />
           <button type="button" className="func">-</button>
 
-          <button type="button" className="num">1</button>
-          <button type="button" className="num">2</button>
-          <button type="button" className="num">3</button>
+          <Number number={1} />
+          <Number number={2} />
+          <Number number={3} />
           <button type="button" className="func">+</button>
 
           <button type="button" className="num-z">0</button>
