@@ -136,10 +136,13 @@ var Calculator = function (_React$Component5) {
 
     _this5.state = { // will change state names to make it work with everything just val for now for testing purposes
       val: "0",
-      hasDec: false
+      prev: "None",
+      hasDec: false,
+      operator: "None"
     };
     _this5.clearVal = _this5.clearVal.bind(_this5);
     _this5.toggleParity = _this5.toggleParity.bind(_this5);
+    _this5.addHundredths = _this5.addHundredths.bind(_this5);
     _this5.addNum = _this5.addNum.bind(_this5);
     _this5.addDec = _this5.addDec.bind(_this5);
     return _this5;
@@ -162,10 +165,19 @@ var Calculator = function (_React$Component5) {
       });
     }
   }, {
+    key: "addHundredths",
+    value: function addHundredths() {
+      var curVal = this.state.val;
+      this.setState({
+        val: String(Number(curVal) / 100),
+        hasDec: true
+      });
+    }
+  }, {
     key: "addNum",
     value: function addNum(digit) {
       var curVal = this.state.val;
-      var absVal = Math.abs(Number(curVal));
+      var absVal = String(Math.abs(Number(curVal)));
       if (absVal.length === 9 || this.state.hasDec && absVal.length === 10) {
         //this.setState({ //do nothing
         //  val: curVal,
@@ -215,7 +227,7 @@ var Calculator = function (_React$Component5) {
           { className: "items" },
           React.createElement(SpOp, { spOp: "C", onClick: this.clearVal }),
           React.createElement(SpOp, { spOp: "+/-", onClick: this.toggleParity }),
-          React.createElement(SpOp, { spOp: "%" }),
+          React.createElement(SpOp, { spOp: "%", onClick: this.addHundredths }),
           React.createElement(Op, { op: "/" }),
           React.createElement(Num, { digit: "7", onClick: this.addNum }),
           React.createElement(Num, { digit: "8", onClick: this.addNum }),
