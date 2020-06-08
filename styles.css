@@ -1,13 +1,13 @@
 
 .container {
   justify-content: center;
-  padding: 15px;
+  padding: 2rem;
 }
 
 h1.center {
-  justify-content: center;
+  text-align: center
 }
 
 p.center {
-  justify-content: center;
+  text-align: center
 }
