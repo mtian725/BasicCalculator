@@ -35,146 +35,98 @@ var Calculator = function (_React$Component) {
           { className: "items" },
           React.createElement(
             "button",
-            { type: "button", className: "button-a" },
-            React.createElement(
-              "div",
-              { className: "grey-button" },
-              "C"
-            )
+            { type: "button", className: "special-func" },
+            "C"
           ),
           React.createElement(
             "button",
-            { type: "button", className: "button-a" },
-            React.createElement(
-              "div",
-              { className: "grey-button" },
-              "+/-"
-            )
+            { type: "button", className: "special-func" },
+            "+/-"
           ),
           React.createElement(
             "button",
-            { type: "button", className: "button-a" },
-            React.createElement(
-              "div",
-              { className: "grey-button" },
-              "%"
-            )
+            { type: "button", className: "special-func" },
+            "%"
           ),
           React.createElement(
             "button",
-            { type: "button", className: "button-a" },
-            React.createElement(
-              "div",
-              { className: "orange-button" },
-              "/"
-            )
+            { type: "button", className: "func" },
+            "/"
           ),
           React.createElement(
-            "div",
-            { className: "black-button" },
-            React.createElement(
-              "button",
-              { type: "button", className: "button-a" },
-              "7"
-            ),
-            React.createElement(
-              "button",
-              { type: "button", className: "button-a" },
-              "8"
-            ),
-            React.createElement(
-              "button",
-              { type: "button", className: "button-a" },
-              "9"
-            )
+            "button",
+            { type: "button", className: "num" },
+            "7"
           ),
           React.createElement(
-            "div",
-            { className: "orange-button" },
-            React.createElement(
-              "button",
-              { type: "button", className: "button-a" },
-              "x"
-            )
+            "button",
+            { type: "button", className: "num" },
+            "8"
           ),
           React.createElement(
-            "div",
-            { className: "black-button" },
-            React.createElement(
-              "button",
-              { type: "button", className: "button-a" },
-              "4"
-            ),
-            React.createElement(
-              "button",
-              { type: "button", className: "button-a" },
-              "5"
-            ),
-            React.createElement(
-              "button",
-              { type: "button", className: "button-a" },
-              "6"
-            )
+            "button",
+            { type: "button", className: "num" },
+            "9"
           ),
           React.createElement(
-            "div",
-            { className: "orange-button" },
-            React.createElement(
-              "button",
-              { type: "button", className: "button-a" },
-              "-"
-            )
+            "button",
+            { type: "button", className: "func" },
+            "x"
           ),
           React.createElement(
-            "div",
-            { className: "black-button" },
-            React.createElement(
-              "button",
-              { type: "button", className: "button-a" },
-              "1"
-            ),
-            React.createElement(
-              "button",
-              { type: "button", className: "button-a" },
-              "2"
-            ),
-            React.createElement(
-              "button",
-              { type: "button", className: "button-a" },
-              "3"
-            )
+            "button",
+            { type: "button", className: "num" },
+            "4"
           ),
           React.createElement(
-            "div",
-            { className: "orange-button" },
-            React.createElement(
-              "button",
-              { type: "button", className: "button-a" },
-              "+"
-            )
+            "button",
+            { type: "button", className: "num" },
+            "5"
           ),
           React.createElement(
-            "div",
-            { className: "black-button" },
-            React.createElement(
-              "button",
-              { type: "button", className: "b-bottom-a" },
-              "0"
-            ),
-            React.createElement(
-              "button",
-              { type: "button", className: "b-bottom-b" },
-              "."
-            )
+            "button",
+            { type: "button", className: "num" },
+            "6"
           ),
           React.createElement(
-            "div",
-            { className: "orange-button" },
-            React.createElement(
-              "button",
-              { type: "button", className: "b-bottom-b" },
-              "="
-            )
+            "button",
+            { type: "button", className: "func" },
+            "-"
+          ),
+          React.createElement(
+            "button",
+            { type: "button", className: "num" },
+            "1"
+          ),
+          React.createElement(
+            "button",
+            { type: "button", className: "num" },
+            "2"
+          ),
+          React.createElement(
+            "button",
+            { type: "button", className: "num" },
+            "3"
+          ),
+          React.createElement(
+            "button",
+            { type: "button", className: "func" },
+            "+"
+          ),
+          React.createElement(
+            "button",
+            { type: "button", className: "num-z" },
+            "0"
+          ),
+          React.createElement(
+            "button",
+            { type: "button", className: "decimal" },
+            "."
+          ),
+          React.createElement(
+            "button",
+            { type: "button", className: "func-b" },
+            "="
           )
         )
       );
