@@ -5,5 +5,5 @@ const temp = <p>Something</p>;
 
 ReactDOM.render(
   temp,
-  document.getElementById('calculator')
+  document.getElementById('temp')
 );
