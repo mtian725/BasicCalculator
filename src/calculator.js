@@ -1,5 +1,5 @@
 
-import { Number } from './number.js';
+// import { Number } from './number.js';
 
 class Calculator extends React.Component {
   constructor (props) {

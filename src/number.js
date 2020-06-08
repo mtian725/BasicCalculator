@@ -1,5 +1,5 @@
 
-export class Number extends React.Component {
+class Number extends React.Component {
   constructor (props) {
     super(props);
   }
