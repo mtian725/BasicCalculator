@@ -25,6 +25,12 @@ var Num = function (_React$Component) {
       this.props.onClick(newNum);
     }
   }, {
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      console.log(this.state.val);
+      return true;
+    }
+  }, {
     key: "render",
     value: function render() {
       if (this.props.digit !== 0) {
