@@ -22,13 +22,15 @@ p.center {
   padding: 8px;
   border: 3px solid black;
   border-radius: 1rem;
-  width: 300px;
+  width: 400px;
 }
 
 .screen {
   border: 3px solid black;
+  border-radius: 1rem;
 }
 
 .items {
   border: 3px solid black;
+  border-radius: 1rem;
 }
