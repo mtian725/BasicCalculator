@@ -161,7 +161,7 @@ class Calculator extends React.Component {
     const absVal = Math.abs(Number(this.state.val));
     const number = Number(this.state.val);
     const hasDeci = this.state.hasDec;
-    const formattedNum;
+    let formattedNum;
     if (number < 0 && hasDeci) {
       formattedNum = "-" + String(absVal).substring(0,10);
     }
