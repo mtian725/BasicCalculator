@@ -30,19 +30,19 @@ class Calculator extends React.Component {
           <button type="button" className="special-func">%</button>
           <button type="button" className="func">/</button>
 
-          <Num number={7} />
-          <Num number={8} />
-          <Num number={9} />
+          <Num num={7} />
+          <Num num={8} />
+          <Num num={9} />
           <button type="button" className="func">x</button>
 
-          <Num number={4} />
-          <Num number={5} />
-          <Num number={6} />
+          <Num num={4} />
+          <Num num={5} />
+          <Num num={6} />
           <button type="button" className="func">-</button>
 
-          <Num number={1} />
-          <Num number={2} />
-          <Num number={3} />
+          <Num num={1} />
+          <Num num={2} />
+          <Num num={3} />
           <button type="button" className="func">+</button>
 
           <button type="button" className="num-z">0</button>
