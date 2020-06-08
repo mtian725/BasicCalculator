@@ -106,7 +106,7 @@ class Calculator extends React.Component {
   toggleParity() {
     const curVal = this.state.val;
 
-    if (curVal.includes("-")) {
+    if (curVal[0] === "-") {
       this.setState({
         val: curVal.substring(1, curVal.length)
       });
@@ -158,22 +158,33 @@ class Calculator extends React.Component {
     console.log(op);
   }
 
-  // keep in mind that some math (division so far) isnt exact and can result in crazy crazy decimals, so that might cause the final value when you do math to be off
-  // super small values (ones that get formatted to 0.00000000) still have a value just not visably seen.
+  // keep in mind that some math (division so far) isnt exact and can result in
+  // crazy crazy decimals, so that might cause the final value when you do math
+  // to be off super small values (ones that get formatted to 0.00000000) still
+  // have a value just not visably seen.
   render () { // figure out how to switch between CA and C and implement CA
     console.log(this.state.val);
     console.log(this.state.hasDec);
 
     let formattedNum;
+    let decVal;
 
-    if (this.state.val.includes("-") && this.state.val.includes(".")) {
-      formattedNum = this.state.val.substring(0,11); // 9 digits + 1 decimal + 1 sign
-    }
-    else if (this.state.val.includes("-") || this.state.val.includes(".")) {
-      formattedNum = this.state.val.substring(0,10); // 9 digits + 1 decimal/sign
+    // if it was in exponential form, convert to decimal
+    if (this.state.val.indexOf("e-") > 0) {
+      decVal = String(Number(this.state.val).toFixed(10));
     }
     else {
-      formattedNum = this.state.val.substring(0,9); // 9 digits
+      decVal = this.state.val;
+    }
+
+    if (this.state.val.includes("-") && this.state.val.includes(".")) {
+      formattedNum = decVal.substring(0,11); // 9 digits + 1 decimal + 1 sign
+    }
+    else if (this.state.val.includes("-") || this.state.val.includes(".")) {
+      formattedNum = decVal.substring(0,10); // 9 digits + 1 decimal/sign
+    }
+    else {
+      formattedNum = decVal.substring(0,9); // 9 digits
     }
 
     return (
