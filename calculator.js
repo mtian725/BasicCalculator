@@ -27,13 +27,12 @@ var Num = function (_React$Component) {
   }, {
     key: "shouldComponentUpdate",
     value: function shouldComponentUpdate(nextProps, nextState) {
-      console.log(this.props.curNum);
-      return true;
+      return this.props.curNum.length < 10;
     }
   }, {
     key: "render",
     value: function render() {
-      if (this.props.digit !== 0) {
+      if (this.props.digit !== "0") {
         return React.createElement(
           "button",
           { type: "button", className: "num", onClick: this.appendNum },
