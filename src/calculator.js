@@ -11,11 +11,6 @@ class Num extends React.Component {
     this.props.onClick(newNum);
   }
 
-  //shouldComponentUpdate (nextProps, nextState) {
-    //return (this.props.curNum.length < 10); // Or if length < 11 if there is a decimal
-    // to get pure length do something like absolute val + check for decimal
-  //}
-
   render () {
     if (this.props.digit !== "0") {
       return (
@@ -56,7 +51,11 @@ class SpOp extends React.Component {
   }
 
   render () {
-    return <button type="button" className="special-func">{this.props.spOp}</button>;
+    return (
+      <button type="button" className="special-func" onClick={this.props.onClick}>
+        {this.props.spOp}
+      </button>
+    );
   }
 }
 
@@ -72,12 +71,25 @@ class Calculator extends React.Component {
     this.state = { // will change state names to make it work with everything just val for now for testing purposes
       val: "0"
     };
+    this.toggleParity = this.toggleParity.bind(this);
     this.addNum = this.addNum.bind(this);
+  }
+
+  toggleParity() {
+    const curVal = this.state.val;
+    this.setState({
+      val: String(Number(curVal) * -1)
+    });
   }
 
   addNum(digit) {
     const curVal = this.state.val;
-    if (curVal === "0") {
+    if (curVal.length === 9) { // add different checks for decimal point and + -
+      this.setState({ //do nothing
+        val: curVal
+      });
+    }
+    else if (curVal === "0") {
       this.setState({
         val: digit
       });
@@ -89,13 +101,6 @@ class Calculator extends React.Component {
     }
   }
 
-  shouldComponentUpdate (nextProps, nextState) {
-    console.log(this.state.val);
-    console.log(this.state.val.length < 10);
-    return (this.state.val.length < 10); // Or if length < 11 if there is a decimal
-    // to get pure length do something like absolute val + check for decimal
-  }
-
   render () {
     return (
       <div>
@@ -104,26 +109,26 @@ class Calculator extends React.Component {
         </div>
         <div className="items">
           <SpOp spOp="C" />
-          <SpOp spOp="+/-" />
+          <SpOp spOp="+/-" onClick={this.toggleParity}/>
           <SpOp spOp="%" />
           <Op op="/"/>
 
-          <Num digit="7" curNum={this.state.val} onClick={this.addNum} />
-          <Num digit="8" curNum={this.state.val} onClick={this.addNum} />
-          <Num digit="9" curNum={this.state.val} onClick={this.addNum} />
+          <Num digit="7" onClick={this.addNum} />
+          <Num digit="8" onClick={this.addNum} />
+          <Num digit="9" onClick={this.addNum} />
           <Op op="x"/>
 
-          <Num digit="4" curNum={this.state.val} onClick={this.addNum} />
-          <Num digit="5" curNum={this.state.val} onClick={this.addNum} />
-          <Num digit="6" curNum={this.state.val} onClick={this.addNum} />
+          <Num digit="4" onClick={this.addNum} />
+          <Num digit="5" onClick={this.addNum} />
+          <Num digit="6" onClick={this.addNum} />
           <Op op="-"/>
 
-          <Num digit="1" curNum={this.state.val} onClick={this.addNum} />
-          <Num digit="2" curNum={this.state.val} onClick={this.addNum} />
-          <Num digit="3" curNum={this.state.val} onClick={this.addNum} />
+          <Num digit="1" onClick={this.addNum} />
+          <Num digit="2" onClick={this.addNum} />
+          <Num digit="3" onClick={this.addNum} />
           <Op op="+"/>
 
-          <Num digit="0" curNum={this.state.val} onClick={this.addNum} />
+          <Num digit="0" onClick={this.addNum} />
           <Dec />
           <Op op="="/>
         </div>
