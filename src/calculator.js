@@ -11,6 +11,11 @@ class Num extends React.Component {
     this.props.onClick(newNum);
   }
 
+  shouldComponentUpdate (nextProps, nextState) {
+    console.log(this.state.val);
+    return true;
+  }
+
   render () {
     if (this.props.digit !== 0) {
       return (
