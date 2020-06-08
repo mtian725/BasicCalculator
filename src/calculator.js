@@ -46,10 +46,6 @@ class Op extends React.Component {
 }
 
 class SpOp extends React.Component {
-  constructor (props) {
-    super(props);
-  }
-
   render () {
     return (
       <button type="button" className="special-func" onClick={this.props.onClick}>
@@ -61,7 +57,11 @@ class SpOp extends React.Component {
 
 class Dec extends React.Component {
   render () {
-    return <button type="button" className="decimal">.</button>;
+    return (
+      <button type="button" className="decimal" onClick={this.props.onClick}>
+        .
+      </button>;
+    );
   }
 }
 
@@ -71,8 +71,17 @@ class Calculator extends React.Component {
     this.state = { // will change state names to make it work with everything just val for now for testing purposes
       val: "0"
     };
+    this.clearVal = this.clearVal.bind(this);
     this.toggleParity = this.toggleParity.bind(this);
     this.addNum = this.addNum.bind(this);
+    this.addDec = this.addDec.bind(this);
+  }
+
+  clearVal() {
+    this.setState({
+      val: "0",
+      hasDec: false
+    });
   }
 
   toggleParity() {
@@ -84,10 +93,13 @@ class Calculator extends React.Component {
 
   addNum(digit) {
     const curVal = this.state.val;
-    if (curVal.length === 9) { // add different checks for decimal point and + -
-      this.setState({ //do nothing
-        val: curVal
-      });
+    const absVal = Math.abs(curVal);
+    if ((absVal.length === 9) || (this.state.hasDec && absVal.length === 10)) {
+      //this.setState({ //do nothing
+      //  val: curVal,
+      //  hasDec: false
+      //});
+      //see if things go wrong
     }
     else if (curVal === "0") {
       this.setState({
@@ -101,14 +113,25 @@ class Calculator extends React.Component {
     }
   }
 
+  addDec() {
+    if (!hasDec) {
+      this.setState({
+        val: this.state.val + ".",
+        hasDec: true;
+      });
+    }
+  }
+
   render () {
+    console.log(this.state.val);
+    console.log(this.state.hasDec);
     return (
       <div>
         <div className="screen">
           <p>{this.state.val}</p>
         </div>
         <div className="items">
-          <SpOp spOp="C" />
+          <SpOp spOp="C" onClick={this.clearVal}/> // figure out how to switch between CA and C and implement CA
           <SpOp spOp="+/-" onClick={this.toggleParity}/>
           <SpOp spOp="%" />
           <Op op="/"/>
@@ -129,7 +152,7 @@ class Calculator extends React.Component {
           <Op op="+"/>
 
           <Num digit="0" onClick={this.addNum} />
-          <Dec />
+          <Dec onClick={this.addDec}/>
           <Op op="="/>
         </div>
       </div>
