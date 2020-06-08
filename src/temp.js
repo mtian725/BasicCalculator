@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const temp = {
-  <p>temp</p>
-}
+const temp = <p>Something</p>;
 
 ReactDOM.render(
   temp,
