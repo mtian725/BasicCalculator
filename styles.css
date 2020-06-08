@@ -83,6 +83,19 @@
   color: white;
 }
 
+.num:active {
+  margin-left: 8px;
+  margin-top: 8px;
+  width: 83px;
+  height: 83px;
+  border: 3px solid black;
+  border-radius: 2rem;
+  font-size: 200%;
+  font-weight: bold;
+  background-color: #b0b0b0;
+  color: white;
+}
+
 .num-z { /* z refering to 0 */
   margin-left: 8px;
   margin-top: 8px;
