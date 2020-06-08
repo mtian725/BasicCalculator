@@ -106,7 +106,7 @@ var Dec = function (_React$Component4) {
   _createClass(Dec, [{
     key: "render",
     value: function render() {
-      React.createElement(
+      return React.createElement(
         "button",
         { type: "button", className: "decimal" },
         "."
