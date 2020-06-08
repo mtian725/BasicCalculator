@@ -30,7 +30,7 @@
   flex-flow: wrap;
 }
 
-.button-a {
+.special-func {
   margin-left: 8px;
   margin-top: 8px;
   width: 83px;
@@ -39,9 +39,24 @@
   border-radius: 2rem;
   font-size: 200%;
   font-weight: bold;
+  background-color: #bdbdbd;
+  color: black;
 }
 
-.b-bottom-a { /* b refering to bottom */
+.func {
+  margin-left: 8px;
+  margin-top: 8px;
+  width: 83px;
+  height: 83px;
+  border: 3px solid black;
+  border-radius: 2rem;
+  font-size: 200%;
+  font-weight: bold;
+  background-color: #fcb321;
+  color: white;
+}
+
+.func-b { /* b refering to bottom */
   margin-left: 8px;
   margin-top: 8px;
   margin-bottom: 8px;
@@ -51,9 +66,38 @@
   border-radius: 2rem;
   font-size: 200%;
   font-weight: bold;
+  background-color: #fcb321;
+  color: white;
 }
 
-.b-bottom-b {
+.num {
+  margin-left: 8px;
+  margin-top: 8px;
+  width: 83px;
+  height: 83px;
+  border: 3px solid black;
+  border-radius: 2rem;
+  font-size: 200%;
+  font-weight: bold;
+  background-color: #4a4a4a;
+  color: white;
+}
+
+.num-z { /* z refering to 0 */
+  margin-left: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  width: 174px;
+  height: 83px;
+  border: 3px solid black;
+  border-radius: 2rem;
+  font-size: 200%;
+  font-weight: bold;
+  background-color: #4a4a4a;
+  color: white;
+}
+
+.decimal {
   margin-left: 8px;
   margin-top: 8px;
   margin-bottom: 8px;
@@ -63,19 +107,6 @@
   border-radius: 2rem;
   font-size: 200%;
   font-weight: bold;
-}
-
-.grey-button {
-  background-color: #bdbdbd;
-  color: black;
-}
-
-.orange-button {
-  background-color: #fcb321;
-  color: white;
-}
-
-.black-button {
   background-color: #4a4a4a;
   color: white;
 }
