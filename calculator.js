@@ -81,7 +81,7 @@ var Calculator = function (_React$Component2) {
             { type: "button", className: "func" },
             "/"
           ),
-          React.createElement(Number, { number: 7 }),
+          React.createElement(Number, { number: "7" }),
           React.createElement(Number, { number: 8 }),
           React.createElement(Number, { number: 9 }),
           React.createElement(
