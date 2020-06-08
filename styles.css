@@ -18,17 +18,17 @@ p.center {
 
 .calculator {
   justify-content: center;
-  margin: 8px;
+  margin:auto;
   padding: 8px;
-  border: 8px;
-  width: 300px;
   border: 3px solid black;
+  border-radius: 1rem;
+  width: 300px;
 }
 
 .screen {
-
+  border: 3px solid black;
 }
 
 .items {
-
+  border: 3px solid black;
 }
