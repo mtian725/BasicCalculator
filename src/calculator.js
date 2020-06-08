@@ -3,14 +3,29 @@
 class Num extends React.Component {
   constructor (props) {
     super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  // temp to check that it works
+  handleChange() {
+    const newNum = this.props.digit;
+    this.props.changeVal(newNum);
   }
 
   render () {
     if (this.props.digit !== 0) {
-      return <button type="button" className="num">{this.props.digit}</button>;
+      return (
+        <button type="button" className="num" onClick={this.handleChange}>
+          {this.props.digit}
+        </button>
+      );
     }
     else {
-      return <button type="button" className="num-z">{this.props.digit}</button>;
+      return (
+        <button type="button" className="num-z" onClick={this.handleChange}>
+          {this.props.digit}
+        </button>
+      );
     }
   }
 }
@@ -43,7 +58,7 @@ class SpOp extends React.Component {
 
 class Dec extends React.Component {
   render () {
-    return <button type="button" className="decimal">.</button>
+    return <button type="button" className="decimal">.</button>;
   }
 }
 
@@ -53,6 +68,14 @@ class Calculator extends React.Component {
     this.state = { // will change state names to make it work with everything just val for now for testing purposes
       val: 0
     };
+    this.changeVal = this.changeVal.bind(this);
+  }
+
+  //temporary to check to make sure buttons work
+  changeVal(newVal) {
+      this.setState({
+        val: newVal
+      });
   }
 
   render () {
@@ -67,22 +90,22 @@ class Calculator extends React.Component {
           <SpOp spOp="%" />
           <Op op="/"/>
 
-          <Num digit={7} />
-          <Num digit={8} />
-          <Num digit={9} />
+          <Num digit={7} onClick={this.changeVal} />
+          <Num digit={8} onClick={this.changeVal} />
+          <Num digit={9} onClick={this.changeVal} />
           <Op op="x"/>
 
-          <Num digit={4} />
-          <Num digit={5} />
-          <Num digit={6} />
+          <Num digit={4} onClick={this.changeVal} />
+          <Num digit={5} onClick={this.changeVal} />
+          <Num digit={6} onClick={this.changeVal} />
           <Op op="-"/>
 
-          <Num digit={1} />
-          <Num digit={2} />
-          <Num digit={3} />
+          <Num digit={1} onClick={this.changeVal} />
+          <Num digit={2} onClick={this.changeVal} />
+          <Num digit={3} onClick={this.changeVal} />
           <Op op="+"/>
 
-          <Num digit={0} />
+          <Num digit={0} onClick={this.changeVal} />
           <Dec />
           <Op op="="/>
         </div>
