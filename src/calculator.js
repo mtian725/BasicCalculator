@@ -6,6 +6,11 @@ class Num extends React.Component {
     this.appendNum = this.appendNum.bind(this);
   }
 
+  appendNum() {
+    const newNum = this.props.digit;
+    this.props.onClick(newNum);
+  }
+
   render () {
     if (this.props.digit !== 0) {
       return (
