@@ -4,8 +4,12 @@
   padding: 2rem;
 }
 
-h1.center {
-  text-align: center
+h1.display-2 {
+  text-align: center;
+}
+
+h2.center {
+  text-align: center;
 }
 
 p.center {
