@@ -36,14 +36,14 @@ class Op extends React.Component {
       return (
         <button type="button" className="func" onClick={this.props.onClick}>
           {this.props.op}
-        </button>;
+        </button>
       );
     }
     else {
       return (
         <button type="button" className="func-b" onClick={this.props.onClick}>
           {this.props.op}
-        </button>;
+        </button>
       );
     }
   }
