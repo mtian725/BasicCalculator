@@ -1,6 +1,6 @@
 
 
-class Number extends React.Component {
+class Num extends React.Component {
   constructor (props) {
     super(props);
   }
@@ -30,19 +30,19 @@ class Calculator extends React.Component {
           <button type="button" className="special-func">%</button>
           <button type="button" className="func">/</button>
 
-          <Number number="7" />
-          <Number number={8} />
-          <Number number={9} />
+          <Num number={7} />
+          <Num number={8} />
+          <Num number={9} />
           <button type="button" className="func">x</button>
 
-          <Number number={4} />
-          <Number number={5} />
-          <Number number={6} />
+          <Num number={4} />
+          <Num number={5} />
+          <Num number={6} />
           <button type="button" className="func">-</button>
 
-          <Number number={1} />
-          <Number number={2} />
-          <Number number={3} />
+          <Num number={1} />
+          <Num number={2} />
+          <Num number={3} />
           <button type="button" className="func">+</button>
 
           <button type="button" className="num-z">0</button>
