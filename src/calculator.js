@@ -31,16 +31,20 @@ class Num extends React.Component {
 
 // short for operator
 class Op extends React.Component {
-  constructor (props) {
-    super(props);
-  }
-
   render () {
     if (this.props.op !== "=") {
-      return <button type="button" className="func">{this.props.op}</button>;
+      return (
+        <button type="button" className="func" onClick={this.props.onClick}>
+          {this.props.op}
+        </button>;
+      );
     }
     else {
-      return <button type="button" className="func-b">{this.props.op}</button>;
+      return (
+        <button type="button" className="func-b" onClick={this.props.onClick}>
+          {this.props.op}
+        </button>;
+      );
     }
   }
 }
@@ -79,6 +83,7 @@ class Calculator extends React.Component {
     this.addHundredths = this.addHundredths.bind(this);
     this.addNum = this.addNum.bind(this);
     this.addDec = this.addDec.bind(this);
+    this.calcOp = this.calcOp.bind(this);
   }
 
   clearVal() {
@@ -90,9 +95,18 @@ class Calculator extends React.Component {
 
   toggleParity() {
     const curVal = this.state.val;
-    this.setState({
-      val: String(Number(curVal) * -1)
-    });
+    const newVal = String(Number(curVal) * -1);
+
+    if (("-" + curVal) !== newVal) {
+      this.setState({
+        val: newVal + "."
+      });
+    }
+    else {
+      this.setState({
+        val: newVal
+      });
+    }
   }
 
   addHundredths() {
@@ -106,12 +120,9 @@ class Calculator extends React.Component {
   addNum(digit) {
     const curVal = this.state.val;
     const absVal = String(Math.abs(Number(curVal)));
-    if ((absVal.length === 9) || (this.state.hasDec && absVal.length === 10)) {
-      //this.setState({ //do nothing
-      //  val: curVal,
-      //  hasDec: false
-      //});
-      //see if things go wrong
+    if ((!this.state.hasDec && absVal.length === 9) ||
+        (this.state.hasDec && absVal.length === 10)) {
+      // do nothing
     }
     else if (curVal === "0") {
       this.setState({
@@ -124,7 +135,12 @@ class Calculator extends React.Component {
       });
     }
   }
+  // Has a weird bug where if at 9 digits you add a decimal point and change to
+  // negative, hasDec will stay as true, meaning that you can't add another
+  // decimal point ever again but it doens't matter appart from visually
+  // because they would not be able to anyways
 
+  // actually scratch that it is an error
   addDec() {
     if (!this.state.hasDec) {
       this.setState({
@@ -134,18 +150,40 @@ class Calculator extends React.Component {
     }
   }
 
+  calcOp() {
+
+  }
+
   render () { // figure out how to switch between CA and C and implement CA
     console.log(this.state.val);
     console.log(this.state.hasDec);
+
+    const absVal = Math.abs(Number(this.state.val));
+    const number = Number(this.state.val);
+    const hasDeci = this.state.hasDec;
+    const formattedNum;
+    if (number < 0 && hasDeci) {
+      formattedNum = "-" + String(absVal).substring(0,10);
+    }
+    else if (number >= 0 && hasDeci) {
+      formattedNum = String(absVal).substring(0,10);
+    }
+    else if (number < 0 && !hasDeci) {
+      formattedNum = "-" + String(absVal).substring(0,9);
+    }
+    else {
+      formattedNum = String(absVal).substring(0,9);
+    }
+
     return (
       <div>
         <div className="screen">
-          <p>{this.state.val}</p>
+          <p>{formattedNum}</p>
         </div>
         <div className="items">
-          <SpOp spOp="C" onClick={this.clearVal}/>
-          <SpOp spOp="+/-" onClick={this.toggleParity}/>
-          <SpOp spOp="%" onClick={this.addHundredths}/>
+          <SpOp spOp="C" onClick={this.clearVal} />
+          <SpOp spOp="+/-" onClick={this.toggleParity} />
+          <SpOp spOp="%" onClick={this.addHundredths} />
           <Op op="/"/>
 
           <Num digit="7" onClick={this.addNum} />
@@ -161,7 +199,7 @@ class Calculator extends React.Component {
           <Num digit="1" onClick={this.addNum} />
           <Num digit="2" onClick={this.addNum} />
           <Num digit="3" onClick={this.addNum} />
-          <Op op="+"/>
+          <Op op="+" onClick={this.calcOp} />
 
           <Num digit="0" onClick={this.addNum} />
           <Dec onClick={this.addDec}/>
