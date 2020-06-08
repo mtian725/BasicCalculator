@@ -117,7 +117,7 @@ class Calculator extends React.Component {
     if (!hasDec) {
       this.setState({
         val: this.state.val + ".",
-        hasDec: true;
+        hasDec: true
       });
     }
   }
