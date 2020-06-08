@@ -14,32 +14,23 @@ var Num = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Num.__proto__ || Object.getPrototypeOf(Num)).call(this, props));
 
-    _this.handleChange = _this.handleChange.bind(_this);
+    _this.appendNum = _this.appendNum.bind(_this);
     return _this;
   }
 
-  // temp to check that it works
-
-
   _createClass(Num, [{
-    key: "handleChange",
-    value: function handleChange() {
-      var newNum = this.props.digit;
-      this.props.onClick(newNum);
-    }
-  }, {
     key: "render",
     value: function render() {
       if (this.props.digit !== 0) {
         return React.createElement(
           "button",
-          { type: "button", className: "num", onClick: this.handleChange },
+          { type: "button", className: "num", onClick: this.appendNum },
           this.props.digit
         );
       } else {
         return React.createElement(
           "button",
-          { type: "button", className: "num-z", onClick: this.handleChange },
+          { type: "button", className: "num-z", onClick: this.appendNum },
           this.props.digit
         );
       }
@@ -138,21 +129,25 @@ var Calculator = function (_React$Component5) {
     var _this5 = _possibleConstructorReturn(this, (Calculator.__proto__ || Object.getPrototypeOf(Calculator)).call(this, props));
 
     _this5.state = { // will change state names to make it work with everything just val for now for testing purposes
-      val: 0
+      val: "0"
     };
-    _this5.changeVal = _this5.changeVal.bind(_this5);
+    _this5.addNum = _this5.addNum.bind(_this5);
     return _this5;
   }
 
-  //temporary to check to make sure buttons work
-
-
   _createClass(Calculator, [{
-    key: "changeVal",
-    value: function changeVal(newVal) {
-      this.setState({
-        val: newVal
-      });
+    key: "addNum",
+    value: function addNum(digit) {
+      var curVal = this.state.val;
+      if (curVal === "0") {
+        this.setState({
+          val: digit
+        });
+      } else {
+        this.setState({
+          val: curVal + digit
+        });
+      }
     }
   }, {
     key: "render",
@@ -176,19 +171,19 @@ var Calculator = function (_React$Component5) {
           React.createElement(SpOp, { spOp: "+/-" }),
           React.createElement(SpOp, { spOp: "%" }),
           React.createElement(Op, { op: "/" }),
-          React.createElement(Num, { digit: 7, onClick: this.changeVal }),
-          React.createElement(Num, { digit: 8, onClick: this.changeVal }),
-          React.createElement(Num, { digit: 9, onClick: this.changeVal }),
+          React.createElement(Num, { digit: "7", onClick: this.addNum }),
+          React.createElement(Num, { digit: "8", onClick: this.addNum }),
+          React.createElement(Num, { digit: "9", onClick: this.addNum }),
           React.createElement(Op, { op: "x" }),
-          React.createElement(Num, { digit: 4, onClick: this.changeVal }),
-          React.createElement(Num, { digit: 5, onClick: this.changeVal }),
-          React.createElement(Num, { digit: 6, onClick: this.changeVal }),
+          React.createElement(Num, { digit: "4", onClick: this.addNum }),
+          React.createElement(Num, { digit: "5", onClick: this.addNum }),
+          React.createElement(Num, { digit: "6", onClick: this.addNum }),
           React.createElement(Op, { op: "-" }),
-          React.createElement(Num, { digit: 1, onClick: this.changeVal }),
-          React.createElement(Num, { digit: 2, onClick: this.changeVal }),
-          React.createElement(Num, { digit: 3, onClick: this.changeVal }),
+          React.createElement(Num, { digit: "1", onClick: this.addNum }),
+          React.createElement(Num, { digit: "2", onClick: this.addNum }),
+          React.createElement(Num, { digit: "3", onClick: this.addNum }),
           React.createElement(Op, { op: "+" }),
-          React.createElement(Num, { digit: 0, onClick: this.changeVal }),
+          React.createElement(Num, { digit: "0", onClick: this.addNum }),
           React.createElement(Dec, null),
           React.createElement(Op, { op: "=" })
         )
