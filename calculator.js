@@ -6,20 +6,41 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// import { Number } from './number.js';
+var Number = function (_React$Component) {
+  _inherits(Number, _React$Component);
 
-var Calculator = function (_React$Component) {
-  _inherits(Calculator, _React$Component);
+  function Number(props) {
+    _classCallCheck(this, Number);
+
+    return _possibleConstructorReturn(this, (Number.__proto__ || Object.getPrototypeOf(Number)).call(this, props));
+  }
+
+  _createClass(Number, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "button",
+        { type: "button", className: "num" },
+        this.props.num
+      );
+    }
+  }]);
+
+  return Number;
+}(React.Component);
+
+var Calculator = function (_React$Component2) {
+  _inherits(Calculator, _React$Component2);
 
   function Calculator(props) {
     _classCallCheck(this, Calculator);
 
-    var _this = _possibleConstructorReturn(this, (Calculator.__proto__ || Object.getPrototypeOf(Calculator)).call(this, props));
+    var _this2 = _possibleConstructorReturn(this, (Calculator.__proto__ || Object.getPrototypeOf(Calculator)).call(this, props));
 
-    _this.state = { // will change state names to make it work with everything just num for now for testing purposes
+    _this2.state = { // will change state names to make it work with everything just num for now for testing purposes
       num: 0
     };
-    return _this;
+    return _this2;
   }
 
   _createClass(Calculator, [{
