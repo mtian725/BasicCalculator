@@ -6,6 +6,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+import { Number } from './number';
+
 var Calculator = function (_React$Component) {
   _inherits(Calculator, _React$Component);
 
@@ -53,11 +55,7 @@ var Calculator = function (_React$Component) {
             { type: "button", className: "func" },
             "/"
           ),
-          React.createElement(
-            "button",
-            { type: "button", className: "num" },
-            "7"
-          ),
+          React.createElement(Number, { number: 7 }),
           React.createElement(
             "button",
             { type: "button", className: "num" },
