@@ -1,4 +1,6 @@
 
+import { Number } from './number';
+
 class Calculator extends React.Component {
   render() {
     return (
@@ -12,7 +14,7 @@ class Calculator extends React.Component {
           <button type="button" className="special-func">%</button>
           <button type="button" className="func">/</button>
 
-          <button type="button" className="num">7</button>
+          <Number number={7} />
           <button type="button" className="num">8</button>
           <button type="button" className="num">9</button>
           <button type="button" className="func">x</button>
