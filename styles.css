@@ -52,7 +52,7 @@
   border-radius: 2rem;
   font-size: 200%;
   font-weight: bold;
-  background-color: #fcb321;
+  background-color: #ffb521;
   color: white;
 }
 
@@ -66,7 +66,7 @@
   border-radius: 2rem;
   font-size: 200%;
   font-weight: bold;
-  background-color: #fcb321;
+  background-color: #ffb521;
   color: white;
 }
 
@@ -80,19 +80,6 @@
   font-size: 200%;
   font-weight: bold;
   background-color: #4a4a4a;
-  color: white;
-}
-
-.num:active {
-  margin-left: 8px;
-  margin-top: 8px;
-  width: 83px;
-  height: 83px;
-  border: 3px solid black;
-  border-radius: 2rem;
-  font-size: 200%;
-  font-weight: bold;
-  background-color: #b0b0b0;
   color: white;
 }
 
@@ -122,4 +109,86 @@
   font-weight: bold;
   background-color: #4a4a4a;
   color: white;
+}
+
+.num:active {
+  margin-left: 8px;
+  margin-top: 8px;
+  width: 83px;
+  height: 83px;
+  border: 3px solid black;
+  border-radius: 2rem;
+  font-size: 200%;
+  font-weight: bold;
+  background-color: #b0b0b0;
+  color: white;
+}
+
+.num-z:active {
+  margin-left: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  width: 174px;
+  height: 83px;
+  border: 3px solid black;
+  border-radius: 2rem;
+  font-size: 200%;
+  font-weight: bold;
+  background-color: #b0b0b0;
+  color: white;
+}
+
+
+.decimal:active {
+  margin-left: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  width: 83px;
+  height: 83px;
+  border: 3px solid black;
+  border-radius: 2rem;
+  font-size: 200%;
+  font-weight: bold;
+  background-color: #b0b0b0;
+  color: white;
+}
+
+.func:active {
+  margin-left: 8px;
+  margin-top: 8px;
+  width: 83px;
+  height: 83px;
+  border: 3px solid black;
+  border-radius: 2rem;
+  font-size: 200%;
+  font-weight: bold;
+  background-color: #ffdc96;
+  color: white;
+}
+
+.func-b:active { /* b refering to bottom */
+  margin-left: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  width: 83px;
+  height: 83px;
+  border: 3px solid black;
+  border-radius: 2rem;
+  font-size: 200%;
+  font-weight: bold;
+  background-color: #ffdc96;
+  color: white;
+}
+
+.special-func:active {
+  margin-left: 8px;
+  margin-top: 8px;
+  width: 83px;
+  height: 83px;
+  border: 3px solid black;
+  border-radius: 2rem;
+  font-size: 200%;
+  font-weight: bold;
+  background-color: #e6e6e6;
+  color: black;
 }
