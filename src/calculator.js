@@ -43,7 +43,7 @@ class SpOp extends React.Component {
 
 class Dec extends React.Component {
   render () {
-    <button type="button" className="decimal">.</button>
+    return <button type="button" className="decimal">.</button>
   }
 }
 
