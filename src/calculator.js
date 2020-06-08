@@ -6,15 +6,15 @@ class Num extends React.Component {
   }
 
   render () {
-    return <button type="button" className="num">{this.props.num}</button>
+    return <button type="button" className="num">{this.props.digit}</button>
   }
 }
 
 class Calculator extends React.Component {
   constructor (props) {
     super(props);
-    this.state = { // will change state names to make it work with everything just num for now for testing purposes
-      num: 0
+    this.state = { // will change state names to make it work with everything just val for now for testing purposes
+      val: 0
     };
   }
 
@@ -22,7 +22,7 @@ class Calculator extends React.Component {
     return (
       <div>
         <div className="screen">
-          <p>{this.state.num}</p>
+          <p>{this.state.val}</p>
         </div>
         <div className="items">
           <button type="button" className="special-func">C</button>
@@ -30,19 +30,19 @@ class Calculator extends React.Component {
           <button type="button" className="special-func">%</button>
           <button type="button" className="func">/</button>
 
-          <Num num={7} />
-          <Num num={8} />
-          <Num num={9} />
+          <Num digit={7} />
+          <Num digit={8} />
+          <Num digit={9} />
           <button type="button" className="func">x</button>
 
-          <Num num={4} />
-          <Num num={5} />
-          <Num num={6} />
+          <Num digit={4} />
+          <Num digit={5} />
+          <Num digit={6} />
           <button type="button" className="func">-</button>
 
-          <Num num={1} />
-          <Num num={2} />
-          <Num num={3} />
+          <Num digit={1} />
+          <Num digit={2} />
+          <Num digit={3} />
           <button type="button" className="func">+</button>
 
           <button type="button" className="num-z">0</button>
