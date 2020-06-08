@@ -24,11 +24,12 @@ var Num = function (_React$Component) {
       var newNum = this.props.digit;
       this.props.onClick(newNum);
     }
-  }, {
-    key: "shouldComponentUpdate",
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      return this.props.curNum.length < 10;
-    }
+
+    //shouldComponentUpdate (nextProps, nextState) {
+    //return (this.props.curNum.length < 10); // Or if length < 11 if there is a decimal
+    // to get pure length do something like absolute val + check for decimal
+    //}
+
   }, {
     key: "render",
     value: function render() {
@@ -159,6 +160,14 @@ var Calculator = function (_React$Component5) {
           val: curVal + digit
         });
       }
+    }
+  }, {
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      console.log(this.state.val);
+      console.log(this.state.val.length < 10);
+      return this.state.val.length < 10; // Or if length < 11 if there is a decimal
+      // to get pure length do something like absolute val + check for decimal
     }
   }, {
     key: "render",
