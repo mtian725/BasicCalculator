@@ -42,9 +42,21 @@
 }
 
 .temp-bottom-a {
-
+  margin-left: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  width: 166px;
+  height: 83px;
+  border: 3px solid black;
+  border-radius: 2rem;
 }
 
 .temp-bottom-b {
-
+  margin-left: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  width: 83px;
+  height: 83px;
+  border: 3px solid black;
+  border-radius: 2rem;
 }
