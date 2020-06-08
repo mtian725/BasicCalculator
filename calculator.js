@@ -27,7 +27,7 @@ var Calculator = function (_React$Component) {
         null,
         React.createElement(
           'div',
-          { style: 'screen' },
+          { className: 'screen' },
           React.createElement(
             'p',
             null,
@@ -36,40 +36,40 @@ var Calculator = function (_React$Component) {
         ),
         React.createElement(
           'div',
-          { style: 'items' },
+          { className: 'items' },
           React.createElement(
             'button',
-            { type: 'button', style: 'temp-button' },
+            { type: 'button', className: 'temp-button' },
             '1'
           ),
           React.createElement(
             'button',
-            { type: 'button', style: 'temp-button' },
+            { type: 'button', className: 'temp-button' },
             '2'
           ),
           React.createElement(
             'button',
-            { type: 'button', style: 'temp-button' },
+            { type: 'button', className: 'temp-button' },
             '3'
           ),
           React.createElement(
             'button',
-            { type: 'button', style: 'temp-button' },
+            { type: 'button', className: 'temp-button' },
             '4'
           ),
           React.createElement(
             'button',
-            { type: 'button', style: 'temp-bottom-a' },
+            { type: 'button', className: 'temp-bottom-a' },
             '5'
           ),
           React.createElement(
             'button',
-            { type: 'button', style: 'temp-bottom-b' },
+            { type: 'button', className: 'temp-bottom-b' },
             '6'
           ),
           React.createElement(
             'button',
-            { type: 'button', style: 'temp-bottom-b' },
+            { type: 'button', className: 'temp-bottom-b' },
             '7'
           )
         )
