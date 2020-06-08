@@ -60,7 +60,7 @@ class Dec extends React.Component {
     return (
       <button type="button" className="decimal" onClick={this.props.onClick}>
         .
-      </button>;
+      </button>
     );
   }
 }
