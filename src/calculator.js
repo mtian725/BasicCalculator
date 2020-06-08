@@ -81,7 +81,7 @@ class Calculator extends React.Component {
   clearVal() {
     this.setState({
       val: "0",
-      hasDec: false
+      hasDec: false,
     });
   }
 
@@ -94,12 +94,12 @@ class Calculator extends React.Component {
 
   addNum(digit) {
     const curVal = this.state.val;
-    const absVal = Math.abs(curVal);
+    const absVal = Math.abs(Number(curVal));
     if ((absVal.length === 9) || (this.state.hasDec && absVal.length === 10)) {
-      this.setState({ //do nothing
-        val: curVal,
-        hasDec: false
-      });
+      //this.setState({ //do nothing
+      //  val: curVal,
+      //  hasDec: false
+      //});
       //see if things go wrong
     }
     else if (curVal === "0") {
@@ -115,7 +115,7 @@ class Calculator extends React.Component {
   }
 
   addDec() {
-    if (!hasDec) {
+    if (!this.state.hasDec) {
       this.setState({
         val: this.state.val + ".",
         hasDec: true
