@@ -10,6 +10,17 @@ class Num extends React.Component {
   }
 }
 
+// short for operator
+class Op extends React.Component {
+  constructor (props) {
+    super(props);
+  }
+
+  render () {
+    return <button type="button" className="func">{this.props.op}</button>
+  }
+}
+
 class Calculator extends React.Component {
   constructor (props) {
     super(props);
@@ -28,22 +39,22 @@ class Calculator extends React.Component {
           <button type="button" className="special-func">C</button>
           <button type="button" className="special-func">+/-</button>
           <button type="button" className="special-func">%</button>
-          <button type="button" className="func">/</button>
+          <Op op="/"/>
 
           <Num digit={7} />
           <Num digit={8} />
           <Num digit={9} />
-          <button type="button" className="func">x</button>
+          <Op op="x"/>
 
           <Num digit={4} />
           <Num digit={5} />
           <Num digit={6} />
-          <button type="button" className="func">-</button>
+          <Op op="-"/>
 
           <Num digit={1} />
           <Num digit={2} />
           <Num digit={3} />
-          <button type="button" className="func">+</button>
+          <Op op="+"/>
 
           <button type="button" className="num-z">0</button>
           <button type="button" className="decimal">.</button>
