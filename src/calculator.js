@@ -1,5 +1,14 @@
 
-// import { Number } from './number.js';
+
+class Number extends React.Component {
+  constructor (props) {
+    super(props);
+  }
+
+  render () {
+    return <button type="button" className="num">{this.props.num}</button>
+  }
+}
 
 class Calculator extends React.Component {
   constructor (props) {
