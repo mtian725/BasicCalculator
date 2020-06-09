@@ -118,6 +118,7 @@ class Calculator extends React.Component {
     this.setState({
       val: "0",
       hasDec: false,
+      operator: "None"
     });
   }
 
@@ -188,6 +189,7 @@ class Calculator extends React.Component {
   render () { // figure out how to switch between CA and C and implement CA
     console.log(this.state.val);
     console.log(this.state.hasDec);
+    console.log(this.state.operator);
 
     let formattedNum;
     let decVal;
