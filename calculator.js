@@ -57,24 +57,11 @@ var Op = function (_React$Component2) {
 
     var _this2 = _possibleConstructorReturn(this, (Op.__proto__ || Object.getPrototypeOf(Op)).call(this, props));
 
-    _this2.state = { css1: "func", css2: "func-b" };
-    _this2.changeColor = _this2.changeColor.bind(_this2);
     _this2.toggleOperation = _this2.toggleOperation.bind(_this2);
     return _this2;
   }
 
   _createClass(Op, [{
-    key: "changeColor",
-    value: function changeColor() {
-      console.log("entered");
-      var newCss1 = this.state.css1 === "func" ? "func-select" : "func";
-      var newCss2 = this.state.css2 === "func-b" ? "func-b-select" : "func-b";
-      this.setState({
-        css1: newCss1,
-        css2: newCss2
-      });
-    }
-  }, {
     key: "toggleOperation",
     value: function toggleOperation() {
       var newOp = this.props.op;
@@ -83,22 +70,16 @@ var Op = function (_React$Component2) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
-
       if (this.props.op !== "=") {
         return React.createElement(
           "button",
-          { type: "button", className: "func", onClick: function onClick() {
-              _this3.toggleOperation;_this3.changeColor;
-            } },
+          { type: "button", className: "func", onClick: this.toggleOperation },
           this.props.op
         );
       } else {
         return React.createElement(
           "button",
-          { type: "button", className: "func-b", onClick: function onClick() {
-              _this3.toggleOperation;_this3.changeColor;
-            } },
+          { type: "button", className: "func-b", onClick: this.toggleOperation },
           this.props.op
         );
       }
@@ -160,21 +141,21 @@ var Calculator = function (_React$Component5) {
   function Calculator(props) {
     _classCallCheck(this, Calculator);
 
-    var _this6 = _possibleConstructorReturn(this, (Calculator.__proto__ || Object.getPrototypeOf(Calculator)).call(this, props));
+    var _this5 = _possibleConstructorReturn(this, (Calculator.__proto__ || Object.getPrototypeOf(Calculator)).call(this, props));
 
-    _this6.state = { // will change state names to make it work with everything just val for now for testing purposes
+    _this5.state = { // will change state names to make it work with everything just val for now for testing purposes
       val: "0",
       prev: "None",
       hasDec: false,
       operator: "None"
     };
-    _this6.clearVal = _this6.clearVal.bind(_this6);
-    _this6.toggleParity = _this6.toggleParity.bind(_this6);
-    _this6.addHundredths = _this6.addHundredths.bind(_this6);
-    _this6.addNum = _this6.addNum.bind(_this6);
-    _this6.addDec = _this6.addDec.bind(_this6);
-    _this6.calcOp = _this6.calcOp.bind(_this6);
-    return _this6;
+    _this5.clearVal = _this5.clearVal.bind(_this5);
+    _this5.toggleParity = _this5.toggleParity.bind(_this5);
+    _this5.addHundredths = _this5.addHundredths.bind(_this5);
+    _this5.addNum = _this5.addNum.bind(_this5);
+    _this5.addDec = _this5.addDec.bind(_this5);
+    _this5.calcOp = _this5.calcOp.bind(_this5);
+    return _this5;
   }
 
   _createClass(Calculator, [{
@@ -240,10 +221,28 @@ var Calculator = function (_React$Component5) {
   }, {
     key: "calcOp",
     value: function calcOp(op) {
-      console.log(op);
       if (op === "+") {
         this.setState({
           operator: "+"
+        });
+      }
+      if (op === "/") {
+        this.setState({
+          operator: "/"
+        });
+      }
+      if (op === "x") {
+        this.setState({
+          operator: "x"
+        });
+      }
+      if (op === "-") {
+        this.setState({
+          operator: "-"
+        });
+      } else {
+        this.setState({
+          operator: "="
         });
       }
     }
