@@ -179,7 +179,8 @@ var Calculator = function (_React$Component5) {
     value: function clearVal() {
       this.setState({
         val: "0",
-        hasDec: false
+        hasDec: false,
+        operator: "None"
       });
     }
   }, {
@@ -255,6 +256,7 @@ var Calculator = function (_React$Component5) {
       // figure out how to switch between CA and C and implement CA
       console.log(this.state.val);
       console.log(this.state.hasDec);
+      console.log(this.state.operator);
 
       var formattedNum = void 0;
       var decVal = void 0;
