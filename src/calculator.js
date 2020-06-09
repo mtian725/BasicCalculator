@@ -39,6 +39,7 @@ class Op extends React.Component {
   }
 
   changeColor () {
+    console.log("entered");
     const newCss1 = this.state.css1 === "func" ? "func-select" : "func";
     const newCss2 = this.state.css2 === "func-b" ? "func-b-select" : "func-b";
     this.setState({
