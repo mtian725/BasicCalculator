@@ -33,7 +33,18 @@ class Num extends React.Component {
 class Op extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { css1: "func", css2: "func-b" };
+    this.changeColor = this.changeColor.bind(this);
     this.toggleOperation = this.toggleOperation.bind(this);
+  }
+
+  changeColor () {
+    const newCss1 = this.state.css1 === "func" ? "func-select" : "func";
+    const newCss2 = this.state.css2 === "func-b" ? "func-b-select" : "func-b";
+    this.setState({
+      css1: newCss1,
+      css2: newCss2
+    });
   }
 
   toggleOperation() {
@@ -42,37 +53,19 @@ class Op extends React.Component {
   }
 
   render () {
-    if (this.props.operator === this.props.op) {
-      if (this.props.op !== "=") {
-        return (
-          <button type="button" className="func-select" onClick={this.toggleOperation}>
-            {this.props.op}
-          </button>
-        );
-      }
-      else {
-        return (
-          <button type="button" className="func-b-select" onClick={this.toggleOperation}>
-            {this.props.op}
-          </button>
-        );
-      }
+    if (this.props.op !== "=") {
+      return (
+        <button type="button" className="func" onClick={() => { this.toggleOperation; this.changeColor; }}>
+          {this.props.op}
+        </button>
+      );
     }
     else {
-      if (this.props.op !== "=") {
-        return (
-          <button type="button" className="func" onClick={this.toggleOperation}>
-            {this.props.op}
-          </button>
-        );
-      }
-      else {
-        return (
-          <button type="button" className="func-b" onClick={this.toggleOperation}>
-            {this.props.op}
-          </button>
-        );
-      }
+      return (
+        <button type="button" className="func-b" onClick={() => { this.toggleOperation; this.changeColor; }}>
+          {this.props.op}
+        </button>
+      );
     }
   }
 }
