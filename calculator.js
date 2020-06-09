@@ -66,6 +66,7 @@ var Op = function (_React$Component2) {
   _createClass(Op, [{
     key: "changeColor",
     value: function changeColor() {
+      console.log("entered");
       var newCss1 = this.state.css1 === "func" ? "func-select" : "func";
       var newCss2 = this.state.css2 === "func-b" ? "func-b-select" : "func-b";
       this.setState({
