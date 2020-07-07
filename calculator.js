@@ -144,8 +144,8 @@ var Calculator = function (_React$Component5) {
     var _this5 = _possibleConstructorReturn(this, (Calculator.__proto__ || Object.getPrototypeOf(Calculator)).call(this, props));
 
     _this5.state = { // will change state names to make it work with everything just val for now for testing purposes
+      totalval: "0",
       val: "0",
-      prev: "None",
       hasDec: false,
       operator: "None"
     };
@@ -161,11 +161,17 @@ var Calculator = function (_React$Component5) {
   _createClass(Calculator, [{
     key: "clearVal",
     value: function clearVal() {
-      this.setState({
-        val: "0",
-        hasDec: false,
-        operator: "None"
-      });
+      if (this.state.val === "0") {
+        this.setState({
+          totalval: "0",
+          operator: "None"
+        });
+      } else {
+        this.setState({
+          val: "0",
+          hasDec: false
+        });
+      }
     }
   }, {
     key: "toggleParity",
@@ -290,7 +296,7 @@ var Calculator = function (_React$Component5) {
         React.createElement(
           "div",
           { className: "items" },
-          React.createElement(SpOp, { spOp: "C", onClick: this.clearVal }),
+          React.createElement(SpOp, { spOp: this.state.val === "0" ? "AC" : "C", onClick: this.clearVal }),
           React.createElement(SpOp, { spOp: "+/-", onClick: this.toggleParity }),
           React.createElement(SpOp, { spOp: "%", onClick: this.addHundredths }),
           React.createElement(Op, { op: "/", currOp: this.state.operator, onClick: this.calcOp }),
