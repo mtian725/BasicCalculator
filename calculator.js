@@ -229,7 +229,9 @@ var Calculator = function (_React$Component5) {
     value: function calcOp(op) {
       if (op === "+") {
         this.setState({
-          operator: "+"
+          operator: "+",
+          totalval: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) + Numbert(his.state.val)),
+          val: "0"
         });
       } else if (op === "/") {
         this.setState({
@@ -245,7 +247,8 @@ var Calculator = function (_React$Component5) {
         });
       } else {
         this.setState({
-          operator: "="
+          operator: "=",
+          totalval: this.state.val
         });
       }
     }
@@ -260,6 +263,7 @@ var Calculator = function (_React$Component5) {
     value: function render() {
       // figure out how to switch between CA and C and implement CA
       console.log(this.state.val);
+      console.log(this.state.totalval);
       console.log(this.state.hasDec);
       console.log(this.state.operator);
 
