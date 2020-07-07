@@ -58,6 +58,7 @@ var Op = function (_React$Component2) {
     var _this2 = _possibleConstructorReturn(this, (Op.__proto__ || Object.getPrototypeOf(Op)).call(this, props));
 
     _this2.toggleOperation = _this2.toggleOperation.bind(_this2);
+    _this2.toggleEqualOperation = _this2.toggleEqualOperation.bind(_this2);
     return _this2;
   }
 
@@ -66,6 +67,11 @@ var Op = function (_React$Component2) {
     value: function toggleOperation() {
       var newOp = this.props.op;
       this.props.onClick(newOp);
+    }
+  }, {
+    key: "toggleEqualOperation",
+    value: function toggleEqualOperation() {
+      this.props.onClick();
     }
   }, {
     key: "render",
@@ -79,7 +85,7 @@ var Op = function (_React$Component2) {
       } else {
         return React.createElement(
           "button",
-          { type: "button", className: this.props.currOp === this.props.op ? "func-b-selected" : "func-b", onClick: this.toggleOperation },
+          { type: "button", className: this.props.currOp === this.props.op ? "func-b-selected" : "func-b", onClick: this.toggleEqualOperation },
           this.props.op
         );
       }
@@ -156,6 +162,7 @@ var Calculator = function (_React$Component5) {
     _this5.addNum = _this5.addNum.bind(_this5);
     _this5.addDec = _this5.addDec.bind(_this5);
     _this5.calcOp = _this5.calcOp.bind(_this5);
+    _this5.equalOp = _this5.equalOp.bind(_this5);
     return _this5;
   }
 
@@ -237,39 +244,90 @@ var Calculator = function (_React$Component5) {
   }, {
     key: "calcOp",
     value: function calcOp(op) {
+      if (this.state.awaitInput) {
+        if (op === "+") {
+          this.setState({
+            operator: "+"
+          });
+        } else if (op === "/") {
+          this.setState({
+            operator: "/"
+          });
+        } else if (op === "x") {
+          this.setState({
+            operator: "x"
+          });
+        } else if (op === "-") {
+          this.setState({
+            operator: "-"
+          });
+        }
+      } else {
+        if (op === "+") {
+          this.setState({
+            operator: "+",
+            totalval: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) + Number(this.state.val)),
+            val: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) + Number(this.state.val)),
+            awaitInput: true
+          });
+        } else if (op === "/") {
+          this.setState({
+            operator: "/",
+            totalval: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) / Number(this.state.val)),
+            val: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) / Number(this.state.val)),
+            awaitInput: true
+          });
+        } else if (op === "x") {
+          this.setState({
+            operator: "x",
+            totalval: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) * Number(this.state.val)),
+            val: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) * Number(this.state.val)),
+            awaitInput: true
+          });
+        } else if (op === "-") {
+          this.setState({
+            operator: "-",
+            totalval: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) - Number(this.state.val)),
+            val: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) - Number(this.state.val)),
+            awaitInput: true
+          });
+        }
+      }
+    }
+  }, {
+    key: "equalOp",
+    value: function equalOp() {
+      // assuming not doing short hand operation
       if (op === "+") {
         this.setState({
-          operator: "+",
-          totalval: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) + Number(this.state.val)),
+          operator: "None",
+          totalval: "0",
           val: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) + Number(this.state.val)),
           awaitInput: true
         });
       } else if (op === "/") {
         this.setState({
-          operator: "/",
-          totalval: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) / Number(this.state.val)),
+          operator: "None",
+          totalval: "0",
           val: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) / Number(this.state.val)),
           awaitInput: true
         });
       } else if (op === "x") {
         this.setState({
-          operator: "x",
-          totalval: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) * Number(this.state.val)),
+          operator: "None",
+          totalval: "0",
           val: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) * Number(this.state.val)),
           awaitInput: true
         });
       } else if (op === "-") {
         this.setState({
-          operator: "-",
-          totalval: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) - Number(this.state.val)),
+          operator: "None",
+          totalval: "0",
           val: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) - Number(this.state.val)),
           awaitInput: true
         });
-      } else {
-        this.setState({
-          operator: "=",
-          totalval: this.state.val
-        });
+      } else {// No operation was selected
+        // do nothing
       }
     }
 
@@ -281,7 +339,6 @@ var Calculator = function (_React$Component5) {
   }, {
     key: "render",
     value: function render() {
-      // figure out how to switch between CA and C and implement CA
       console.log("val", this.state.val);
       console.log("totalval", this.state.totalval);
       console.log("hasDec", this.state.hasDec);
@@ -338,7 +395,7 @@ var Calculator = function (_React$Component5) {
           React.createElement(Op, { op: "+", currOp: this.state.operator, onClick: this.calcOp }),
           React.createElement(Num, { digit: "0", onClick: this.addNum }),
           React.createElement(Dec, { onClick: this.addDec }),
-          React.createElement(Op, { op: "=", currOp: this.state.operator, onClick: this.calcOp })
+          React.createElement(Op, { op: "=", currOp: this.state.operator, onClick: this.equalOp })
         )
       );
     }
