@@ -73,13 +73,13 @@ var Op = function (_React$Component2) {
       if (this.props.op !== "=") {
         return React.createElement(
           "button",
-          { type: "button", className: "func", onClick: this.toggleOperation },
+          { type: "button", className: this.props.currOp === this.props.op ? "func-selected" : "func", onClick: this.toggleOperation },
           this.props.op
         );
       } else {
         return React.createElement(
           "button",
-          { type: "button", className: "func-b", onClick: this.toggleOperation },
+          { type: "button", className: this.props.currOp === this.props.op ? "func-b-selected" : "func-b", onClick: this.toggleOperation },
           this.props.op
         );
       }
@@ -293,22 +293,22 @@ var Calculator = function (_React$Component5) {
           React.createElement(SpOp, { spOp: "C", onClick: this.clearVal }),
           React.createElement(SpOp, { spOp: "+/-", onClick: this.toggleParity }),
           React.createElement(SpOp, { spOp: "%", onClick: this.addHundredths }),
-          React.createElement(Op, { op: "/", onClick: this.calcOp }),
+          React.createElement(Op, { op: "/", currOp: this.state.operator, onClick: this.calcOp }),
           React.createElement(Num, { digit: "7", onClick: this.addNum }),
           React.createElement(Num, { digit: "8", onClick: this.addNum }),
           React.createElement(Num, { digit: "9", onClick: this.addNum }),
-          React.createElement(Op, { op: "x", onClick: this.calcOp }),
+          React.createElement(Op, { op: "x", currOp: this.state.operator, onClick: this.calcOp }),
           React.createElement(Num, { digit: "4", onClick: this.addNum }),
           React.createElement(Num, { digit: "5", onClick: this.addNum }),
           React.createElement(Num, { digit: "6", onClick: this.addNum }),
-          React.createElement(Op, { op: "-", onClick: this.calcOp }),
+          React.createElement(Op, { op: "-", currOp: this.state.operator, onClick: this.calcOp }),
           React.createElement(Num, { digit: "1", onClick: this.addNum }),
           React.createElement(Num, { digit: "2", onClick: this.addNum }),
           React.createElement(Num, { digit: "3", onClick: this.addNum }),
-          React.createElement(Op, { op: "+", onClick: this.calcOp }),
+          React.createElement(Op, { op: "+", currOp: this.state.operator, onClick: this.calcOp }),
           React.createElement(Num, { digit: "0", onClick: this.addNum }),
           React.createElement(Dec, { onClick: this.addDec }),
-          React.createElement(Op, { op: "=", onClick: this.calcOp })
+          React.createElement(Op, { op: "=", currOp: this.state.operator, onClick: this.calcOp })
         )
       );
     }
