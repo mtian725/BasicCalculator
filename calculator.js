@@ -223,7 +223,8 @@ var Calculator = function (_React$Component5) {
       if (this.state.awaitInput) {
         this.setState({
           val: digit,
-          awaitInput: false
+          awaitInput: false,
+          isError: false
         });
       } else {
         var curVal = this.state.val;
@@ -261,11 +262,14 @@ var Calculator = function (_React$Component5) {
           });
         } else {
           var newVal = void 0;
+          var hasEr = false;
+
           if (this.state.operator === "+") {
             newVal = String(Number(this.state.totalval) + Number(this.state.val));
           } else if (this.state.operator === "/") {
             if (Number(this.state.val) === 0) {
               newVal = "Div By 0";
+              hasEr = true;
             } else {
               newVal = String(Number(this.state.totalval) / Number(this.state.val));
             }
@@ -277,9 +281,21 @@ var Calculator = function (_React$Component5) {
             newVal = this.state.val;
           }
 
-          if (newVal === "Div By 0" || newVal > 999999999 || newVal < -999999999) {
+          // "Div By 0" when compared in this situation with alwasy return false
+          if (newVal > 999999999) {
+            newVal = "Overflow";
+            hasEr = true;
+          }
+          if (newVal < -999999999) {
+            newVal = "Underflow";
+            hasEr = true;
+          }
+
+          if (hasEr) {
             this.setState({
-              isError: true
+              isError: true,
+              val: newVal,
+              awaitInput: true
             });
           } else if (this.state.operator === "+") {
             this.setState({
@@ -325,11 +341,14 @@ var Calculator = function (_React$Component5) {
       if (!this.state.isError) {
         // assuming not doing short hand operation, where = is the terminating operation
         var newVal = void 0;
+        var hasEr = false;
+
         if (this.state.operator === "+") {
           newVal = String(Number(this.state.totalval) + Number(this.state.val));
         } else if (this.state.operator === "/") {
           if (Number(this.state.val) === 0) {
             newVal = "Div By 0";
+            hasEr = true;
           } else {
             newVal = String(Number(this.state.totalval) / Number(this.state.val));
           }
@@ -341,9 +360,21 @@ var Calculator = function (_React$Component5) {
           newVal = this.state.val;
         }
 
-        if (newVal === "Div By 0" || newVal > 999999999 || newVal < -999999999) {
+        // "Div By 0" when compared in this situation with alwasy return false
+        if (newVal > 999999999) {
+          newVal = "Overflow";
+          hasEr = true;
+        }
+        if (newVal < -999999999) {
+          newVal = "Underflow";
+          hasEr = true;
+        }
+
+        if (hasEr) {
           this.setState({
-            isError: true
+            isError: true,
+            val: newVal,
+            awaitInput: true
           });
         } else if (this.state.operator === "+") {
           this.setState({
