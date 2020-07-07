@@ -283,7 +283,7 @@ var Calculator = function (_React$Component5) {
           { className: "screen" },
           React.createElement(
             "p",
-            null,
+            { className: "text" },
             formattedNum
           )
         ),
