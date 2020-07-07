@@ -86,7 +86,8 @@ class Calculator extends React.Component {
       totalval: "0",
       val: "0",
       hasDec: false,
-      operator: "None"
+      operator: "None",
+      awaitInput: true
     };
     this.clearVal = this.clearVal.bind(this);
     this.toggleParity = this.toggleParity.bind(this);
@@ -97,7 +98,7 @@ class Calculator extends React.Component {
   }
 
   clearVal() {
-    if (this.state.val === "0") {
+    if (this.state.val === "0" || !(this.state.awaitInput)) {
       this.setState({
         totalval: "0",
         operator: "None"
@@ -135,21 +136,29 @@ class Calculator extends React.Component {
   }
 
   addNum(digit) {
-    const curVal = this.state.val;
-    const absVal = String(Math.abs(Number(curVal)));
-    if ((!this.state.hasDec && absVal.length === 9) ||
-        (this.state.hasDec && absVal.length === 10)) {
-      // do nothing
-    }
-    else if (curVal === "0") {
+    if (this.state.awaitInput) {
       this.setState({
-        val: digit
+        val: digit,
+        awaitInput: false
       });
     }
     else {
-      this.setState({
-        val: (curVal + digit)
-      });
+      const curVal = this.state.val;
+      const absVal = String(Math.abs(Number(curVal)));
+      if ((!this.state.hasDec && absVal.length === 9) ||
+          (this.state.hasDec && absVal.length === 10)) {
+        // do nothing
+      }
+      else if (curVal === "0") {
+        this.setState({
+          val: digit
+        });
+      }
+      else {
+        this.setState({
+          val: (curVal + digit)
+        });
+      }
     }
   }
 
@@ -167,7 +176,8 @@ class Calculator extends React.Component {
       this.setState({
         operator: "+",
         totalval: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) + Number(his.state.val))),
-        val: "0"
+        val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) + Number(his.state.val))),
+        awaitInput: true
       });
     }
     else if (op === "/") {
@@ -198,10 +208,10 @@ class Calculator extends React.Component {
   // to be off super small values (ones that get formatted to 0.00000000) still
   // have a value just not visably seen.
   render () { // figure out how to switch between CA and C and implement CA
-    console.log(this.state.val);
-    console.log(this.state.totalval);
-    console.log(this.state.hasDec);
-    console.log(this.state.operator);
+    console.log("val",this.state.val);
+    console.log("totalval",this.state.totalval);
+    console.log("hasDec",this.state.hasDec);
+    console.log("op",this.state.operator);
 
     let formattedNum;
     let decVal;
