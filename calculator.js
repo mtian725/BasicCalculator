@@ -165,6 +165,8 @@ var Calculator = function (_React$Component5) {
       if (this.state.val === "0" || !this.state.awaitInput) {
         this.setState({
           totalval: "0",
+          val: "0",
+          hasDec: false,
           operator: "None"
         });
       } else {
@@ -244,15 +246,24 @@ var Calculator = function (_React$Component5) {
         });
       } else if (op === "/") {
         this.setState({
-          operator: "/"
+          operator: "/",
+          totalval: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) / Number(this.state.val)),
+          val: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) / Number(this.state.val)),
+          awaitInput: true
         });
       } else if (op === "x") {
         this.setState({
-          operator: "x"
+          operator: "x",
+          totalval: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) * Number(this.state.val)),
+          val: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) * Number(this.state.val)),
+          awaitInput: true
         });
       } else if (op === "-") {
         this.setState({
-          operator: "-"
+          operator: "-",
+          totalval: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) - Number(this.state.val)),
+          val: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) - Number(this.state.val)),
+          awaitInput: true
         });
       } else {
         this.setState({
