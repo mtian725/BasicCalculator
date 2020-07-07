@@ -101,6 +101,8 @@ class Calculator extends React.Component {
     if (this.state.val === "0" || !(this.state.awaitInput)) {
       this.setState({
         totalval: "0",
+        val: "0",
+        hasDec: false,
         operator: "None"
       })
     }
@@ -183,16 +185,25 @@ class Calculator extends React.Component {
     else if (op === "/") {
       this.setState({
         operator: "/",
+        totalval: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) / Number(this.state.val))),
+        val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) / Number(this.state.val))),
+        awaitInput: true
       });
     }
     else if (op === "x") {
       this.setState({
         operator: "x",
+        totalval: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) * Number(this.state.val))),
+        val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) * Number(this.state.val))),
+        awaitInput: true
       });
     }
     else if (op === "-") {
       this.setState({
         operator: "-",
+        totalval: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) - Number(this.state.val))),
+        val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) - Number(this.state.val))),
+        awaitInput: true
       });
     }
     else {
