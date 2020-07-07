@@ -186,53 +186,88 @@ class Calculator extends React.Component {
       });
     }
     else {
+      let newVal;
+      if (this.state.operator === "+") {
+        newVal = String(Number(this.state.totalval) + Number(this.state.val));
+      }
+      else if (this.state.operator === "/") {
+        newVal = String(Number(this.state.totalval) / Number(this.state.val));
+      }
+      else if (this.state.operator === "x") {
+        newVal = String(Number(this.state.totalval) * Number(this.state.val));
+      }
+      else if (this.state.operator === "-") {
+        newVal = String(Number(this.state.totalval) - Number(this.state.val));
+      }
+      else {
+        newVal = this.state.val;
+      }
+
       if (this.state.operator === "+") {
         this.setState({
           operator: op,
-          totalval: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) + Number(this.state.val))),
-          val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) + Number(this.state.val))),
+          totalval: newVal,
+          val: newVal,
           awaitInput: true
         });
       }
       else if (this.state.operator === "/") {
         this.setState({
           operator: op,
-          totalval: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) / Number(this.state.val))),
-          val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) / Number(this.state.val))),
+          totalval: newVal,
+          val: newVal,
           awaitInput: true
         });
       }
       else if (this.state.operator === "x") {
         this.setState({
           operator: op,
-          totalval: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) * Number(this.state.val))),
-          val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) * Number(this.state.val))),
+          totalval: newVal,
+          val: newVal,
           awaitInput: true
         });
       }
       else if (this.state.operator === "-") {
         this.setState({
           operator: op,
-          totalval: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) - Number(this.state.val))),
-          val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) - Number(this.state.val))),
+          totalval: newVal,
+          val: newVal,
           awaitInput: true
         });
       }
       else {
         this.setState({
-          operator: op
+          operator: op,
+          totalval: newVal,
         });
       }
     }
   }
 
   equalOp() {
-    // assuming not doing short hand operation
+    // assuming not doing short hand operation, where = is the terminating operation
+    let newVal;
+    if (this.state.operator === "+") {
+      newVal = String(Number(this.state.totalval) + Number(this.state.val));
+    }
+    else if (this.state.operator === "/") {
+      newVal = String(Number(this.state.totalval) / Number(this.state.val));
+    }
+    else if (this.state.operator === "x") {
+      newVal = String(Number(this.state.totalval) * Number(this.state.val));
+    }
+    else if (this.state.operator === "-") {
+      newVal = String(Number(this.state.totalval) - Number(this.state.val));
+    }
+    else {
+      newVal = this.state.val;
+    }
+
     if (this.state.operator === "+") {
       this.setState({
         operator: "None",
         totalval: "0",
-        val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) + Number(this.state.val))),
+        val: newVal,
         awaitInput: true
       });
     }
@@ -240,7 +275,7 @@ class Calculator extends React.Component {
       this.setState({
         operator: "None",
         totalval: "0",
-        val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) / Number(this.state.val))),
+        val: newVal,
         awaitInput: true
       });
     }
@@ -248,7 +283,7 @@ class Calculator extends React.Component {
       this.setState({
         operator: "None",
         totalval: "0",
-        val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) * Number(this.state.val))),
+        val: newVal,
         awaitInput: true
       });
     }
@@ -256,7 +291,7 @@ class Calculator extends React.Component {
       this.setState({
         operator: "None",
         totalval: "0",
-        val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) - Number(this.state.val))),
+        val: newVal,
         awaitInput: true
       });
     }
