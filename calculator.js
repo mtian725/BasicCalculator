@@ -293,7 +293,8 @@ var Calculator = function (_React$Component5) {
         } else {
           this.setState({
             operator: op,
-            totalval: newVal
+            totalval: newVal,
+            awaitInput: true
           });
         }
       }
