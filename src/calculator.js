@@ -34,11 +34,16 @@ class Op extends React.Component {
   constructor(props) {
     super(props);
     this.toggleOperation = this.toggleOperation.bind(this);
+    this.toggleEqualOperation = this.toggleEqualOperation.bind(this);
   }
 
   toggleOperation() {
     const newOp = this.props.op;
     this.props.onClick(newOp);
+  }
+
+  toggleEqualOperation() {
+    this.props.onClick();
   }
 
   render () {
@@ -51,7 +56,7 @@ class Op extends React.Component {
     }
     else {
       return (
-        <button type="button" className={(this.props.currOp === this.props.op) ? "func-b-selected" : "func-b"} onClick={this.toggleOperation}>
+        <button type="button" className={(this.props.currOp === this.props.op) ? "func-b-selected" : "func-b"} onClick={this.toggleEqualOperation}>
           {this.props.op}
         </button>
       );
@@ -95,6 +100,7 @@ class Calculator extends React.Component {
     this.addNum = this.addNum.bind(this);
     this.addDec = this.addDec.bind(this);
     this.calcOp = this.calcOp.bind(this);
+    this.equalOp = this.equalOp.bind(this);
   }
 
   clearVal() {
@@ -174,43 +180,100 @@ class Calculator extends React.Component {
   }
 
   calcOp(op) {
+    if (this.state.awaitInput) {
+      if (op === "+") {
+        this.setState({
+          operator: "+",
+        });
+      }
+      else if (op === "/") {
+        this.setState({
+          operator: "/",
+        });
+      }
+      else if (op === "x") {
+        this.setState({
+          operator: "x",
+        });
+      }
+      else if (op === "-") {
+        this.setState({
+          operator: "-",
+        });
+      }
+    }
+    else {
+      if (op === "+") {
+        this.setState({
+          operator: "+",
+          totalval: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) + Number(this.state.val))),
+          val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) + Number(this.state.val))),
+          awaitInput: true
+        });
+      }
+      else if (op === "/") {
+        this.setState({
+          operator: "/",
+          totalval: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) / Number(this.state.val))),
+          val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) / Number(this.state.val))),
+          awaitInput: true
+        });
+      }
+      else if (op === "x") {
+        this.setState({
+          operator: "x",
+          totalval: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) * Number(this.state.val))),
+          val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) * Number(this.state.val))),
+          awaitInput: true
+        });
+      }
+      else if (op === "-") {
+        this.setState({
+          operator: "-",
+          totalval: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) - Number(this.state.val))),
+          val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) - Number(this.state.val))),
+          awaitInput: true
+        });
+      }
+    }
+  }
+
+  equalOp() {
+    // assuming not doing short hand operation
     if (op === "+") {
       this.setState({
-        operator: "+",
-        totalval: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) + Number(this.state.val))),
+        operator: "None",
+        totalval: "0",
         val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) + Number(this.state.val))),
         awaitInput: true
       });
     }
     else if (op === "/") {
       this.setState({
-        operator: "/",
-        totalval: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) / Number(this.state.val))),
+        operator: "None",
+        totalval: "0",
         val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) / Number(this.state.val))),
         awaitInput: true
       });
     }
     else if (op === "x") {
       this.setState({
-        operator: "x",
-        totalval: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) * Number(this.state.val))),
+        operator: "None",
+        totalval: "0",
         val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) * Number(this.state.val))),
         awaitInput: true
       });
     }
     else if (op === "-") {
       this.setState({
-        operator: "-",
-        totalval: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) - Number(this.state.val))),
+        operator: "None",
+        totalval: "0",
         val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) - Number(this.state.val))),
         awaitInput: true
       });
     }
-    else {
-      this.setState({
-        operator: "=",
-        totalval: this.state.val
-      });
+    else { // No operation was selected
+      // do nothing
     }
   }
 
@@ -218,7 +281,7 @@ class Calculator extends React.Component {
   // crazy crazy decimals, so that might cause the final value when you do math
   // to be off super small values (ones that get formatted to 0.00000000) still
   // have a value just not visably seen.
-  render () { // figure out how to switch between CA and C and implement CA
+  render () {
     console.log("val",this.state.val);
     console.log("totalval",this.state.totalval);
     console.log("hasDec",this.state.hasDec);
@@ -273,7 +336,7 @@ class Calculator extends React.Component {
 
           <Num digit="0" onClick={this.addNum} />
           <Dec onClick={this.addDec}/>
-          <Op op="=" currOp={this.state.operator} onClick={this.calcOp} />
+          <Op op="=" currOp={this.state.operator} onClick={this.equalOp} />
         </div>
       </div>
     );
