@@ -216,7 +216,7 @@ class Calculator extends React.Component {
     return (
       <div>
         <div className="screen">
-          <p>{formattedNum}</p>
+          <p className="text">{formattedNum}</p>
         </div>
         <div className="items">
           <SpOp spOp="C" onClick={this.clearVal} />

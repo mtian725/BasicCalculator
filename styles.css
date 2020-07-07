@@ -219,3 +219,9 @@
   background-color: #e6e6e6;
   color: black;
 }
+
+.text {
+  margin: auto;
+  text-align: center;
+  font-weight: bold;
+}
