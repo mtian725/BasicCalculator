@@ -298,28 +298,28 @@ var Calculator = function (_React$Component5) {
     key: "equalOp",
     value: function equalOp() {
       // assuming not doing short hand operation
-      if (op === "+") {
+      if (this.state.operator === "+") {
         this.setState({
           operator: "None",
           totalval: "0",
           val: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) + Number(this.state.val)),
           awaitInput: true
         });
-      } else if (op === "/") {
+      } else if (this.state.operator === "/") {
         this.setState({
           operator: "None",
           totalval: "0",
           val: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) / Number(this.state.val)),
           awaitInput: true
         });
-      } else if (op === "x") {
+      } else if (this.state.operator === "x") {
         this.setState({
           operator: "None",
           totalval: "0",
           val: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) * Number(this.state.val)),
           awaitInput: true
         });
-      } else if (op === "-") {
+      } else if (this.state.operator === "-") {
         this.setState({
           operator: "None",
           totalval: "0",
