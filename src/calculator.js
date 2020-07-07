@@ -181,55 +181,38 @@ class Calculator extends React.Component {
 
   calcOp(op) {
     if (this.state.awaitInput) {
-      if (op === "+") {
-        this.setState({
-          operator: "+",
-        });
-      }
-      else if (op === "/") {
-        this.setState({
-          operator: "/",
-        });
-      }
-      else if (op === "x") {
-        this.setState({
-          operator: "x",
-        });
-      }
-      else if (op === "-") {
-        this.setState({
-          operator: "-",
-        });
-      }
+      this.setState({
+        operator: op
+      });
     }
     else {
-      if (op === "+") {
+      if (this.state.operator === "+") {
         this.setState({
-          operator: "+",
+          operator: op,
           totalval: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) + Number(this.state.val))),
           val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) + Number(this.state.val))),
           awaitInput: true
         });
       }
-      else if (op === "/") {
+      else if (this.state.operator === "/") {
         this.setState({
-          operator: "/",
+          operator: op,
           totalval: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) / Number(this.state.val))),
           val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) / Number(this.state.val))),
           awaitInput: true
         });
       }
-      else if (op === "x") {
+      else if (this.state.operator === "x") {
         this.setState({
-          operator: "x",
+          operator: op,
           totalval: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) * Number(this.state.val))),
           val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) * Number(this.state.val))),
           awaitInput: true
         });
       }
-      else if (op === "-") {
+      else if (this.state.operator === "-") {
         this.setState({
-          operator: "-",
+          operator: op,
           totalval: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) - Number(this.state.val))),
           val: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) - Number(this.state.val))),
           awaitInput: true
