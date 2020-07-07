@@ -44,14 +44,14 @@ class Op extends React.Component {
   render () {
     if (this.props.op !== "=") {
       return (
-        <button type="button" className="func" onClick={this.toggleOperation}>
+        <button type="button" className={(this.props.currOp === this.props.op) ? "func-selected" : "func"} onClick={this.toggleOperation}>
           {this.props.op}
         </button>
       );
     }
     else {
       return (
-        <button type="button" className="func-b" onClick={this.toggleOperation}>
+        <button type="button" className={(this.props.currOp === this.props.op) ? "func-b-selected" : "func-b"} onClick={this.toggleOperation}>
           {this.props.op}
         </button>
       );
@@ -222,26 +222,26 @@ class Calculator extends React.Component {
           <SpOp spOp="C" onClick={this.clearVal} />
           <SpOp spOp="+/-" onClick={this.toggleParity} />
           <SpOp spOp="%" onClick={this.addHundredths} />
-          <Op op="/" onClick={this.calcOp} />
+          <Op op="/" currOp={this.state.operator} onClick={this.calcOp} />
 
           <Num digit="7" onClick={this.addNum} />
           <Num digit="8" onClick={this.addNum} />
           <Num digit="9" onClick={this.addNum} />
-          <Op op="x" onClick={this.calcOp} />
+          <Op op="x" currOp={this.state.operator} onClick={this.calcOp} />
 
           <Num digit="4" onClick={this.addNum} />
           <Num digit="5" onClick={this.addNum} />
           <Num digit="6" onClick={this.addNum} />
-          <Op op="-" onClick={this.calcOp} />
+          <Op op="-" currOp={this.state.operator} onClick={this.calcOp} />
 
           <Num digit="1" onClick={this.addNum} />
           <Num digit="2" onClick={this.addNum} />
           <Num digit="3" onClick={this.addNum} />
-          <Op op="+" onClick={this.calcOp} />
+          <Op op="+" currOp={this.state.operator} onClick={this.calcOp} />
 
           <Num digit="0" onClick={this.addNum} />
           <Dec onClick={this.addDec}/>
-          <Op op="=" onClick={this.calcOp} />
+          <Op op="=" currOp={this.state.operator} onClick={this.calcOp} />
         </div>
       </div>
     );
