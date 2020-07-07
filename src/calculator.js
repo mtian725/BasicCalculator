@@ -83,8 +83,8 @@ class Calculator extends React.Component {
   constructor (props) {
     super(props);
     this.state = { // will change state names to make it work with everything just val for now for testing purposes
+      totalval: "0",
       val: "0",
-      prev: "None",
       hasDec: false,
       operator: "None"
     };
@@ -97,11 +97,18 @@ class Calculator extends React.Component {
   }
 
   clearVal() {
-    this.setState({
-      val: "0",
-      hasDec: false,
-      operator: "None"
-    });
+    if (this.state.val === "0") {
+      this.setState({
+        totalval: "0",
+        operator: "None"
+      })
+    }
+    else {
+      this.setState({
+        val: "0",
+        hasDec: false
+      });
+    }
   }
 
   toggleParity() {
@@ -219,7 +226,7 @@ class Calculator extends React.Component {
           <p className="text">{formattedNum}</p>
         </div>
         <div className="items">
-          <SpOp spOp="C" onClick={this.clearVal} />
+          <SpOp spOp={this.state.val === "0" ? "AC" : "C"} onClick={this.clearVal} />
           <SpOp spOp="+/-" onClick={this.toggleParity} />
           <SpOp spOp="%" onClick={this.addHundredths} />
           <Op op="/" currOp={this.state.operator} onClick={this.calcOp} />
