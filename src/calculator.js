@@ -239,6 +239,7 @@ class Calculator extends React.Component {
         this.setState({
           operator: op,
           totalval: newVal,
+          awaitInput: true
         });
       }
     }
