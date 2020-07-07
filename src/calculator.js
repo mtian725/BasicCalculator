@@ -237,7 +237,8 @@ class Calculator extends React.Component {
           this.setState({
             isError: true,
             val: newVal,
-            awaitInput: true
+            awaitInput: true,
+            operator: "None"
           });
         }
         else if (this.state.operator === "+") {
@@ -325,7 +326,8 @@ class Calculator extends React.Component {
         this.setState({
           isError: true,
           val: newVal,
-          awaitInput: true
+          awaitInput: true,
+          operator: "None"
         });
       }
       else if (this.state.operator === "+") {
