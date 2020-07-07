@@ -92,7 +92,8 @@ class Calculator extends React.Component {
       val: "0",
       hasDec: false,
       operator: "None",
-      awaitInput: true
+      awaitInput: true,
+      isError: false,
     };
     this.clearVal = this.clearVal.bind(this);
     this.toggleParity = this.toggleParity.bind(this);
@@ -104,12 +105,21 @@ class Calculator extends React.Component {
   }
 
   clearVal() {
-    if (this.state.val === "0" || !(this.state.awaitInput)) {
+    if (this.state.val === "0" || !(this.state.awaitInput) || this.state.isError) {
       this.setState({
         totalval: "0",
         val: "0",
         hasDec: false,
-        operator: "None"
+        operator: "None",
+        awaitInput: true,
+        isError: false,
+      })
+    }
+    else if (this.state.operator === "None") { // Only None if and only if no operation has been executed or = has been called
+      this.setState({
+        totalval: "0",
+        val: "0",
+        hasDec: false,
       })
     }
     else {
@@ -180,18 +190,97 @@ class Calculator extends React.Component {
   }
 
   calcOp(op) {
-    if (this.state.awaitInput) {
-      this.setState({
-        operator: op,
-      });
+    if (!(this.state.isError)) {
+      if (this.state.awaitInput) {
+        this.setState({
+          operator: op,
+        });
+      }
+      else {
+        let newVal;
+        if (this.state.operator === "+") {
+          newVal = String(Number(this.state.totalval) + Number(this.state.val));
+        }
+        else if (this.state.operator === "/") {
+          if (Number(this.state.val) === 0) {
+            newVal = "Div By 0";
+          }
+          else {
+            newVal = String(Number(this.state.totalval) / Number(this.state.val));
+          }
+        }
+        else if (this.state.operator === "x") {
+          newVal = String(Number(this.state.totalval) * Number(this.state.val));
+        }
+        else if (this.state.operator === "-") {
+          newVal = String(Number(this.state.totalval) - Number(this.state.val));
+        }
+        else {
+          newVal = this.state.val;
+        }
+
+        if (newVal === "Div By 0" || newVal > 999999999 || newVal < -999999999) {
+          this.setState({
+            isError: true
+          });
+        }
+        else if (this.state.operator === "+") {
+          this.setState({
+            operator: op,
+            totalval: newVal,
+            val: newVal,
+            awaitInput: true
+          });
+        }
+        else if (this.state.operator === "/") {
+          this.setState({
+            operator: op,
+            totalval: newVal,
+            val: newVal,
+            awaitInput: true
+          });
+        }
+        else if (this.state.operator === "x") {
+          this.setState({
+            operator: op,
+            totalval: newVal,
+            val: newVal,
+            awaitInput: true
+          });
+        }
+        else if (this.state.operator === "-") {
+          this.setState({
+            operator: op,
+            totalval: newVal,
+            val: newVal,
+            awaitInput: true
+          });
+        }
+        else {
+          this.setState({
+            operator: op,
+            totalval: newVal,
+            awaitInput: true
+          });
+        }
+      }
     }
-    else {
+  }
+
+  equalOp() {
+    if (!(this.state.isError)) {
+      // assuming not doing short hand operation, where = is the terminating operation
       let newVal;
       if (this.state.operator === "+") {
         newVal = String(Number(this.state.totalval) + Number(this.state.val));
       }
       else if (this.state.operator === "/") {
-        newVal = String(Number(this.state.totalval) / Number(this.state.val));
+        if (Number(this.state.val) === 0) {
+          newVal = "Div By 0";
+        }
+        else {
+          newVal = String(Number(this.state.totalval) / Number(this.state.val));
+        }
       }
       else if (this.state.operator === "x") {
         newVal = String(Number(this.state.totalval) * Number(this.state.val));
@@ -203,97 +292,42 @@ class Calculator extends React.Component {
         newVal = this.state.val;
       }
 
-      if (this.state.operator === "+") {
+      if (newVal === "Div By 0" || newVal > 999999999 || newVal < -999999999) {
         this.setState({
-          operator: op,
-          totalval: newVal,
+          isError: true
+        });
+      }
+      else if (this.state.operator === "+") {
+        this.setState({
+          operator: "None",
           val: newVal,
           awaitInput: true
         });
       }
       else if (this.state.operator === "/") {
         this.setState({
-          operator: op,
-          totalval: newVal,
+          operator: "None",
           val: newVal,
           awaitInput: true
         });
       }
       else if (this.state.operator === "x") {
         this.setState({
-          operator: op,
-          totalval: newVal,
+          operator: "None",
           val: newVal,
           awaitInput: true
         });
       }
       else if (this.state.operator === "-") {
         this.setState({
-          operator: op,
-          totalval: newVal,
+          operator: "None",
           val: newVal,
           awaitInput: true
         });
       }
-      else {
-        this.setState({
-          operator: op,
-          totalval: newVal,
-          awaitInput: true
-        });
+      else { // No operation was selected
+        // do nothing
       }
-    }
-  }
-
-  equalOp() {
-    // assuming not doing short hand operation, where = is the terminating operation
-    let newVal;
-    if (this.state.operator === "+") {
-      newVal = String(Number(this.state.totalval) + Number(this.state.val));
-    }
-    else if (this.state.operator === "/") {
-      newVal = String(Number(this.state.totalval) / Number(this.state.val));
-    }
-    else if (this.state.operator === "x") {
-      newVal = String(Number(this.state.totalval) * Number(this.state.val));
-    }
-    else if (this.state.operator === "-") {
-      newVal = String(Number(this.state.totalval) - Number(this.state.val));
-    }
-    else {
-      newVal = this.state.val;
-    }
-
-    if (this.state.operator === "+") {
-      this.setState({
-        operator: "None",
-        val: newVal,
-        awaitInput: true
-      });
-    }
-    else if (this.state.operator === "/") {
-      this.setState({
-        operator: "None",
-        val: newVal,
-        awaitInput: true
-      });
-    }
-    else if (this.state.operator === "x") {
-      this.setState({
-        operator: "None",
-        val: newVal,
-        awaitInput: true
-      });
-    }
-    else if (this.state.operator === "-") {
-      this.setState({
-        operator: "None",
-        val: newVal,
-        awaitInput: true
-      });
-    }
-    else { // No operation was selected
-      // do nothing
     }
   }
 
