@@ -319,28 +319,24 @@ var Calculator = function (_React$Component5) {
       if (this.state.operator === "+") {
         this.setState({
           operator: "None",
-          totalval: "0",
           val: newVal,
           awaitInput: true
         });
       } else if (this.state.operator === "/") {
         this.setState({
           operator: "None",
-          totalval: "0",
           val: newVal,
           awaitInput: true
         });
       } else if (this.state.operator === "x") {
         this.setState({
           operator: "None",
-          totalval: "0",
           val: newVal,
           awaitInput: true
         });
       } else if (this.state.operator === "-") {
         this.setState({
           operator: "None",
-          totalval: "0",
           val: newVal,
           awaitInput: true
         });
