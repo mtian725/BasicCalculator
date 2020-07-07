@@ -240,7 +240,7 @@ class Calculator extends React.Component {
 
   equalOp() {
     // assuming not doing short hand operation
-    if (op === "+") {
+    if (this.state.operator === "+") {
       this.setState({
         operator: "None",
         totalval: "0",
@@ -248,7 +248,7 @@ class Calculator extends React.Component {
         awaitInput: true
       });
     }
-    else if (op === "/") {
+    else if (this.state.operator === "/") {
       this.setState({
         operator: "None",
         totalval: "0",
@@ -256,7 +256,7 @@ class Calculator extends React.Component {
         awaitInput: true
       });
     }
-    else if (op === "x") {
+    else if (this.state.operator === "x") {
       this.setState({
         operator: "None",
         totalval: "0",
@@ -264,7 +264,7 @@ class Calculator extends React.Component {
         awaitInput: true
       });
     }
-    else if (op === "-") {
+    else if (this.state.operator === "-") {
       this.setState({
         operator: "None",
         totalval: "0",
