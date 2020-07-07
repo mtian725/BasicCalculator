@@ -147,7 +147,8 @@ var Calculator = function (_React$Component5) {
       totalval: "0",
       val: "0",
       hasDec: false,
-      operator: "None"
+      operator: "None",
+      awaitInput: true
     };
     _this5.clearVal = _this5.clearVal.bind(_this5);
     _this5.toggleParity = _this5.toggleParity.bind(_this5);
@@ -161,7 +162,7 @@ var Calculator = function (_React$Component5) {
   _createClass(Calculator, [{
     key: "clearVal",
     value: function clearVal() {
-      if (this.state.val === "0") {
+      if (this.state.val === "0" || !this.state.awaitInput) {
         this.setState({
           totalval: "0",
           operator: "None"
@@ -200,18 +201,25 @@ var Calculator = function (_React$Component5) {
   }, {
     key: "addNum",
     value: function addNum(digit) {
-      var curVal = this.state.val;
-      var absVal = String(Math.abs(Number(curVal)));
-      if (!this.state.hasDec && absVal.length === 9 || this.state.hasDec && absVal.length === 10) {
-        // do nothing
-      } else if (curVal === "0") {
+      if (this.state.awaitInput) {
         this.setState({
-          val: digit
+          val: digit,
+          awaitInput: false
         });
       } else {
-        this.setState({
-          val: curVal + digit
-        });
+        var curVal = this.state.val;
+        var absVal = String(Math.abs(Number(curVal)));
+        if (!this.state.hasDec && absVal.length === 9 || this.state.hasDec && absVal.length === 10) {
+          // do nothing
+        } else if (curVal === "0") {
+          this.setState({
+            val: digit
+          });
+        } else {
+          this.setState({
+            val: curVal + digit
+          });
+        }
       }
     }
   }, {
@@ -231,7 +239,8 @@ var Calculator = function (_React$Component5) {
         this.setState({
           operator: "+",
           totalval: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) + Number(his.state.val)),
-          val: "0"
+          val: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) + Number(his.state.val)),
+          awaitInput: true
         });
       } else if (op === "/") {
         this.setState({
@@ -262,10 +271,10 @@ var Calculator = function (_React$Component5) {
     key: "render",
     value: function render() {
       // figure out how to switch between CA and C and implement CA
-      console.log(this.state.val);
-      console.log(this.state.totalval);
-      console.log(this.state.hasDec);
-      console.log(this.state.operator);
+      console.log("val", this.state.val);
+      console.log("totalval", this.state.totalval);
+      console.log("hasDec", this.state.hasDec);
+      console.log("op", this.state.operator);
 
       var formattedNum = void 0;
       var decVal = void 0;
