@@ -165,27 +165,30 @@ class Calculator extends React.Component {
   calcOp(op) {
     if (op === "+") {
       this.setState({
-        operator: "+"
+        operator: "+",
+        totalval: (this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) + Numbert(his.state.val))),
+        val: "0"
       });
     }
     else if (op === "/") {
       this.setState({
-        operator: "/"
+        operator: "/",
       });
     }
     else if (op === "x") {
       this.setState({
-        operator: "x"
+        operator: "x",
       });
     }
     else if (op === "-") {
       this.setState({
-        operator: "-"
+        operator: "-",
       });
     }
     else {
       this.setState({
-        operator: "="
+        operator: "=",
+        totalval: this.state.val
       });
     }
   }
@@ -196,6 +199,7 @@ class Calculator extends React.Component {
   // have a value just not visably seen.
   render () { // figure out how to switch between CA and C and implement CA
     console.log(this.state.val);
+    console.log(this.state.totalval);
     console.log(this.state.hasDec);
     console.log(this.state.operator);
 
