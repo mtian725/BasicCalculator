@@ -218,6 +218,11 @@ class Calculator extends React.Component {
           awaitInput: true
         });
       }
+      else {
+        this.setState({
+          operator: op
+        });
+      }
     }
   }
 
