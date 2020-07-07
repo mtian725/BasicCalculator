@@ -182,7 +182,7 @@ class Calculator extends React.Component {
   calcOp(op) {
     if (this.state.awaitInput) {
       this.setState({
-        operator: op
+        operator: op,
       });
     }
     else {
@@ -267,7 +267,6 @@ class Calculator extends React.Component {
     if (this.state.operator === "+") {
       this.setState({
         operator: "None",
-        totalval: "0",
         val: newVal,
         awaitInput: true
       });
@@ -275,7 +274,6 @@ class Calculator extends React.Component {
     else if (this.state.operator === "/") {
       this.setState({
         operator: "None",
-        totalval: "0",
         val: newVal,
         awaitInput: true
       });
@@ -283,7 +281,6 @@ class Calculator extends React.Component {
     else if (this.state.operator === "x") {
       this.setState({
         operator: "None",
-        totalval: "0",
         val: newVal,
         awaitInput: true
       });
@@ -291,7 +288,6 @@ class Calculator extends React.Component {
     else if (this.state.operator === "-") {
       this.setState({
         operator: "None",
-        totalval: "0",
         val: newVal,
         awaitInput: true
       });
