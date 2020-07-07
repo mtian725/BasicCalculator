@@ -277,6 +277,10 @@ var Calculator = function (_React$Component5) {
             val: this.state.totalval === "0" ? this.state.val : String(Number(this.state.totalval) - Number(this.state.val)),
             awaitInput: true
           });
+        } else {
+          this.setState({
+            operator: op
+          });
         }
       }
     }
