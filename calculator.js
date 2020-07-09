@@ -196,26 +196,30 @@ var Calculator = function (_React$Component5) {
   }, {
     key: "toggleParity",
     value: function toggleParity() {
-      var curVal = this.state.val;
+      if (!this.state.isError) {
+        var curVal = this.state.val;
 
-      if (curVal[0] === "-") {
-        this.setState({
-          val: curVal.substring(1, curVal.length)
-        });
-      } else {
-        this.setState({
-          val: "-" + curVal
-        });
+        if (curVal[0] === "-") {
+          this.setState({
+            val: curVal.substring(1, curVal.length)
+          });
+        } else {
+          this.setState({
+            val: "-" + curVal
+          });
+        }
       }
     }
   }, {
     key: "addHundredths",
     value: function addHundredths() {
-      var curVal = this.state.val;
-      this.setState({
-        val: String(Number(curVal) / 100),
-        hasDec: this.state.val.includes(".")
-      });
+      if (!this.state.isError) {
+        var curVal = this.state.val;
+        this.setState({
+          val: String(Number(curVal) / 100),
+          hasDec: this.state.val.includes(".")
+        });
+      }
     }
   }, {
     key: "addNum",
@@ -245,11 +249,13 @@ var Calculator = function (_React$Component5) {
   }, {
     key: "addDec",
     value: function addDec() {
-      if (!this.state.hasDec) {
-        this.setState({
-          val: this.state.val + ".",
-          hasDec: true
-        });
+      if (!this.state.isError) {
+        if (!this.state.hasDec) {
+          this.setState({
+            val: this.state.val + ".",
+            hasDec: true
+          });
+        }
       }
     }
   }, {
@@ -296,35 +302,40 @@ var Calculator = function (_React$Component5) {
               isError: true,
               val: newVal,
               awaitInput: true,
-              operator: "None"
+              operator: "None",
+              hasDec: false
             });
           } else if (this.state.operator === "+") {
             this.setState({
               operator: op,
               totalval: newVal,
               val: newVal,
-              awaitInput: true
+              awaitInput: true,
+              hasDec: false
             });
           } else if (this.state.operator === "/") {
             this.setState({
               operator: op,
               totalval: newVal,
               val: newVal,
-              awaitInput: true
+              awaitInput: true,
+              hasDec: false
             });
           } else if (this.state.operator === "x") {
             this.setState({
               operator: op,
               totalval: newVal,
               val: newVal,
-              awaitInput: true
+              awaitInput: true,
+              hasDec: false
             });
           } else if (this.state.operator === "-") {
             this.setState({
               operator: op,
               totalval: newVal,
               val: newVal,
-              awaitInput: true
+              awaitInput: true,
+              hasDec: false
             });
           } else {
             this.setState({
@@ -376,31 +387,36 @@ var Calculator = function (_React$Component5) {
             isError: true,
             val: newVal,
             awaitInput: true,
-            operator: "None"
+            operator: "None",
+            hasDec: false
           });
         } else if (this.state.operator === "+") {
           this.setState({
             operator: "None",
             val: newVal,
-            awaitInput: true
+            awaitInput: true,
+            hasDec: false
           });
         } else if (this.state.operator === "/") {
           this.setState({
             operator: "None",
             val: newVal,
-            awaitInput: true
+            awaitInput: true,
+            hasDec: false
           });
         } else if (this.state.operator === "x") {
           this.setState({
             operator: "None",
             val: newVal,
-            awaitInput: true
+            awaitInput: true,
+            hasDec: false
           });
         } else if (this.state.operator === "-") {
           this.setState({
             operator: "None",
             val: newVal,
-            awaitInput: true
+            awaitInput: true,
+            hasDec: false
           });
         } else {// No operation was selected
           // do nothing
