@@ -142,7 +142,8 @@ class Calculator extends React.Component {
       }
       else {
         this.setState({
-          val: "-" + curVal
+          val: "-" + curVal,
+          totalval: this.state.awaitInput ? this.state.totalval.substring(1, this.state.totalval.length) : this.state.totalval
         });
       }
     }
