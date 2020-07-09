@@ -193,6 +193,14 @@ class Calculator extends React.Component {
           hasDec: true
         });
       }
+      else if (this.state.awaitInput) {
+        this.setState({
+          val: '0.',
+          awaitInput: false,
+          isError: false,
+          hasDec: true
+        });
+      }
     }
   }
 
@@ -288,7 +296,8 @@ class Calculator extends React.Component {
           this.setState({
             operator: op,
             totalval: newVal,
-            awaitInput: true
+            awaitInput: true,
+            hasDec: false,
           });
         }
       }
