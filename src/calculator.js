@@ -187,17 +187,17 @@ class Calculator extends React.Component {
 
   addDec() {
     if (!(this.state.isError)) {
-      if (!this.state.hasDec) {
-        this.setState({
-          val: this.state.val + ".",
-          hasDec: true
-        });
-      }
-      else if (this.state.awaitInput) {
+      if (this.state.awaitInput) { // If it is awaitInput, then has Dec should always be false
         this.setState({
           val: '0.',
           awaitInput: false,
           isError: false,
+          hasDec: true
+        });
+      }
+      else if (!this.state.hasDec) {
+        this.setState({
+          val: this.state.val + ".",
           hasDec: true
         });
       }
@@ -398,6 +398,7 @@ class Calculator extends React.Component {
     console.log("totalval",this.state.totalval);
     console.log("hasDec",this.state.hasDec);
     console.log("op",this.state.operator);
+    console.log("expecting val", this.state.awaitInput);
 
     let formattedNum;
     let decVal;
