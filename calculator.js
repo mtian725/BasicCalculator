@@ -206,7 +206,8 @@ var Calculator = function (_React$Component5) {
           });
         } else {
           this.setState({
-            val: "-" + curVal
+            val: "-" + curVal,
+            totalval: this.state.awaitInput ? this.state.totalval.substring(1, this.state.totalval.length) : this.state.totalval
           });
         }
       }
