@@ -207,7 +207,7 @@ var Calculator = function (_React$Component5) {
         } else {
           this.setState({
             val: "-" + curVal,
-            totalval: this.state.awaitInput ? this.state.totalval.substring(1, this.state.totalval.length) : this.state.totalval
+            totalval: this.state.awaitInput ? "-" + this.state.totalval : this.state.totalval
           });
         }
       }
@@ -398,6 +398,7 @@ var Calculator = function (_React$Component5) {
           this.setState({
             isError: true,
             val: newVal,
+            totalval: newVal,
             awaitInput: true,
             operator: "None",
             hasDec: false
@@ -406,6 +407,7 @@ var Calculator = function (_React$Component5) {
           this.setState({
             operator: "None",
             val: newVal,
+            totalval: newVal,
             awaitInput: true,
             hasDec: false
           });
@@ -413,6 +415,7 @@ var Calculator = function (_React$Component5) {
           this.setState({
             operator: "None",
             val: newVal,
+            totalval: newVal,
             awaitInput: true,
             hasDec: false
           });
@@ -420,6 +423,7 @@ var Calculator = function (_React$Component5) {
           this.setState({
             operator: "None",
             val: newVal,
+            totalval: newVal,
             awaitInput: true,
             hasDec: false
           });
@@ -427,6 +431,7 @@ var Calculator = function (_React$Component5) {
           this.setState({
             operator: "None",
             val: newVal,
+            totalval: newVal,
             awaitInput: true,
             hasDec: false
           });
