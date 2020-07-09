@@ -136,7 +136,8 @@ class Calculator extends React.Component {
 
       if (curVal[0] === "-") {
         this.setState({
-          val: curVal.substring(1, curVal.length)
+          val: curVal.substring(1, curVal.length),
+          totalval: this.state.awaitInput ? this.state.totalval.substring(1, this.state.totalval.length) : this.state.totalval
         });
       }
       else {
@@ -152,6 +153,7 @@ class Calculator extends React.Component {
       const curVal = this.state.val;
       this.setState({
         val: String(Number(curVal)/100),
+        totalval: this.state.awaitInput ? String(Number(this.state.totalval)/100) : this.state.totalval,
         hasDec: (this.state.val.includes("."))
       });
     }
