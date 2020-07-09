@@ -255,6 +255,13 @@ var Calculator = function (_React$Component5) {
             val: this.state.val + ".",
             hasDec: true
           });
+        } else if (this.state.awaitInput) {
+          this.setState({
+            val: '0.',
+            awaitInput: false,
+            isError: false,
+            hasDec: true
+          });
         }
       }
     }
@@ -341,7 +348,8 @@ var Calculator = function (_React$Component5) {
             this.setState({
               operator: op,
               totalval: newVal,
-              awaitInput: true
+              awaitInput: true,
+              hasDec: false
             });
           }
         }
