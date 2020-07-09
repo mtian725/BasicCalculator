@@ -143,7 +143,7 @@ class Calculator extends React.Component {
       else {
         this.setState({
           val: "-" + curVal,
-          totalval: this.state.awaitInput ? this.state.totalval.substring(1, this.state.totalval.length) : this.state.totalval
+          totalval: this.state.awaitInput ? "-" + this.state.totalval : this.state.totalval
         });
       }
     }
@@ -349,6 +349,7 @@ class Calculator extends React.Component {
         this.setState({
           isError: true,
           val: newVal,
+          totalval: newVal,
           awaitInput: true,
           operator: "None",
           hasDec: false,
@@ -358,6 +359,7 @@ class Calculator extends React.Component {
         this.setState({
           operator: "None",
           val: newVal,
+          totalval: newVal,
           awaitInput: true,
           hasDec: false,
         });
@@ -366,6 +368,7 @@ class Calculator extends React.Component {
         this.setState({
           operator: "None",
           val: newVal,
+          totalval: newVal,
           awaitInput: true,
           hasDec: false,
         });
@@ -374,6 +377,7 @@ class Calculator extends React.Component {
         this.setState({
           operator: "None",
           val: newVal,
+          totalval: newVal,
           awaitInput: true,
           hasDec: false,
         });
@@ -382,6 +386,7 @@ class Calculator extends React.Component {
         this.setState({
           operator: "None",
           val: newVal,
+          totalval: newVal,
           awaitInput: true,
           hasDec: false,
         });
